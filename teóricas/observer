@@ -1,0 +1,47 @@
+public class Store {
+	private final NotificationService _notificationService;
+
+    public Store(){
+        notificationService = new NotificationService(); 
+    }
+
+    public newItemPromote(){
+        _notificationService.notify();
+    }
+
+    public NotificationService getService(){
+        return _notificationService;
+    }
+}
+
+public class EmailListener{
+    private final String _email;
+
+    public EmailListener(String email){
+        this.email = _email;
+    }
+
+    public void update(){
+        //actually send the email
+    }
+}
+
+public class NotificationService{
+    private final List<EmailMsgListener> _customers;
+
+    public NotificationService(){
+        _customers = new ArrayList<>();
+    }
+
+    public void subscribe(EmailMsgListener listener){
+        _customers.add(listener);
+    }
+
+    public void unsubscribe(EmailMsgListener listener){
+        _customers.remove(listener);
+    }
+
+    public void notify(){
+        _customers.forEach(listener -> listener.update());
+    }
+}

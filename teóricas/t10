@@ -1,0 +1,99 @@
+CLASSES ABSTRATAS
+
+	Usadas quando 
+
+	Impossível criar instancias dessa classe
+
+	Podem ter métodos abstratos. Sao declarados como:
+		- public abstract void makeNoise();
+		
+		Animal a = new Dog(); a.makenoise(); funciona
+
+POLIMORFISMO
+
+	Significa varias formas. Cada variável declarada com um determinado tipo pode referenciar objetos de vários tipos. por ex: uma variável animal pode referenciar todos os tipos de animal.
+
+	
+	LIGACAO DE CODIGO (ESTATICA)
+
+		Em tempo de compilação o compilador decide onde esta o código a executar
+
+		Usada em metodos private, final e static.
+
+	LIGAÇÃO DE CODIGO (DINAMICA)
+
+		Em tempo de compilação vê se tudo esta nos conformes e compila.
+
+		Em tempo de execução, verifica o tipo do objeto e vai descobrir o método
+			Se a subclasse não tiver o método ele vai buscar na superclasse
+
+	obj instanceof Class
+
+		se obj for instancia de Class retorna true, else o oposto.
+
+		nao recomendam o uso. Devemos evitar. Apenas devemos usar em:
+
+			metodo equals que recebe object. 
+
+				Boolean equals(Object obj){
+					if (obj instance of Dog)
+					return _name.equals((Dog)obj)._name
+					return false;
+				}
+
+				ou então 
+		
+				Boolean equals(Object obj){
+					if (obj instance of Dog d)
+					return _name.equals(d._name)
+					return false;
+				}
+
+
+PACKAGES
+
+	VANTAGENS
+
+		- Oferecer um nivel de acesso
+
+		- Organização do código (classes relacionadas entre si ficam agrupadas)
+			Ha uma hierarquia de packages (package e sub-package)
+
+			package pai: abc, package filho: def
+			para acedermos ao package def: abc.def
+
+		- Espaço de nomes: 
+			
+			- usar o nome completo: package.classe.
+
+
+	Para aceder a outras classes:
+
+		- nome simples para classes do mesmo package;
+
+		- Nas outras o nome completo ou import nome completo:
+			import java.util.Collection;
+
+			import java.util.* (importa todas as classes do package java.util)
+
+	As classes Integer e String estão definidas no package java.lang
+
+	Automaticamente o java faz import java.lang.*
+
+
+	import java.util.Date e impor java.sql.Date. isto da erro de compilação:
+
+		para resolver: chamamos um com import e o outro usamos nome completo
+
+	
+
+	import static java.util.Math
+	
+		import static faz import de todos os membros estáticos dessa classe.
+			por exemplo da constante Math.PI
+
+	Para usarmos static attributes usamos sempre o nome completo
+
+
+
+

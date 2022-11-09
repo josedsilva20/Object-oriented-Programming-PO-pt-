@@ -1,0 +1,85 @@
+	_____________________________
+			Enumeration<E> 
+			<<interface>>
+	_____________________________
+	_____________________________
+	hasMoreElements(): boolean
+	next(): E
+	_____________________________
+
+	
+	_____________________________
+			Iterator<E> 
+			<<interface>>
+	_____________________________
+	_____________________________
+	hasNext(): boolean
+	next(): E
+	remove()
+	_____________________________
+
+	
+
+ADAPTER (BEHAVIORAL)
+
+	Transforma objetos diferentes em "mesma coisa". ex do iterator e do enumeration
+
+
+
+		public class EnummerationToIterator<E> implements Iterator<E>{
+			private Enumeration<E> _enumerations;
+
+			public EnumerationToIterator (Enummeration<E>){
+				_enummeratio = e;
+			}
+
+			public boolean hasNext(){
+				return _enumeration.hasMoreElement();
+			}
+
+			public E next(){
+				return _enummeration.next();
+			}
+
+			public void remove(){
+				throw new UnsupportedOperationExceptio();
+				//pois o enumeration nao nos deixa remover elementos.
+			}
+		}
+
+
+
+
+
+
+
+
+Para evitar try e catch no projeto (refactorizar o codigo):
+
+	public abstract class prrCommand<E> extends Command<E>{
+		//funciona para a maioria dos comandos, nao todos
+
+		public prrCommand(String s, E receiver){
+			super(s, receiver);
+		}
+
+		protected void execute() throws CommandException{
+			try{
+				prrExecute();
+			}
+			catch (UnknownClientIdException u){
+				throw new ...
+			}
+			//fazemos isso com cada exception que acontece com muitas classes pondo todos os catches equivalentes.
+		}
+
+		protected void prrExecute throws CommandException(); //e todas aquelas que vamos por nos catches da funcao execute(). ex linha 70. esse é um metodo abstrato.
+
+
+Se tivermos uma classe no core que é um ClientComaparator e num comando na app instanciamos esse comando. Para nao criarmos sempre, criamos apenas um:
+
+	public static final --- ---; //este comparador fica definido na app e nao no core.
+
+
+
+	}

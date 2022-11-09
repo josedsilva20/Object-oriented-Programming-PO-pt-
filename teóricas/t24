@@ -1,0 +1,79 @@
+public class WeatherStation{
+    private currentConditions _current;
+    public int getPressure(){
+        ---
+    }
+
+    public int getTemperature(){}
+
+    public int getHumidity(){}
+
+    public void measurementChanged(){
+        int temp = ----------------------------------------------------------------
+        int pre = ...
+        int h = ...
+        _current.updateData(temp, pre, h);
+    }
+}
+
+
+
+OBSERVER
+
+
+    objetivo:
+
+        definir dependencia de 1 para muitos
+
+    consequencias
+
+        subjects so sabem que têm uma lista de observers
+
+        subject nao sabem concretamente quem é o observer
+
+        metodo usado para fazer broadcast
+
+        nao deve depender da ordem em que as entidades devem ser notificadas
+
+
+
+    temos um subject que pode ter 0 ou mais Obsrevers.
+
+    um observer pode dizer a um subject que quer ser notificado.
+
+        uma metod addObserver() e outro removeObserver() e um notifyObserver() na classe abstrata Subject.
+
+        A classe abstrata Observer contem um metodo chamado update()
+
+    Neste caso WeatherStation herda de Subject e concretiza  notifyObsever():
+
+        for (Observer : _observers)
+            o.update(t, p, h);
+
+    e assim as funcionalidades da aplicação (uma nova entidade) herdam de observer.
+
+        isso obedece ao principio do aberto/fechado.
+
+
+
+
+Na entrega final: 
+
+    vao verificar se estamos a obedecer ao principio do aberto fechado (instanceof apenas no equals)
+
+    programar para o supertipo sera um principio de desenho. Permitir alterar detalhes da concretizacao sem ter impacto nos clientes dessa superclasse.
+
+    vao verificar fugas de privacidade core/app (do core para a app):
+
+        fugas do core para os comandos vao ser penalizadas
+
+            fugas ao nivel de colecoes e atributos, ou atributos do tipo colection.
+
+            para nao fazermos copias, podemos fazer unmodifiableCollection.
+
+            para ordenar temos de fazer uma copia.
+
+
+
+
+

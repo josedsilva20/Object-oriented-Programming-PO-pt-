@@ -1,0 +1,83 @@
+PACKAGE (stor aconselha a ler os slides)
+
+	Servem para agrupar conjuntos de classes
+	
+	hierarquia de packages mostra-se como: a.b package a tem sub package b
+
+	Para organizar num sistema de ficheiros:
+
+		- um package a.b.c em diretórios fica: .../a/b/c
+
+	o projeto tem um dir prr/core/ 	(classes principais)
+							prr/app/muitas classes (main, client, terminal)
+
+	para compilar um package:
+
+		- javac -classpath dir1: dir2; aa.jar ou javac -cp dir1: dir2; aa.jar
+
+			podem ser diretórios ou ficheiros .jar
+
+			podemos definir uma var de ambiente que guarda o classpath.
+
+	para executar:
+
+		- a.b.A. Isto significa nome do package, A. Ele traduz em a/b/A.class
+	
+
+	Para compilar e executar o projeto:
+
+		se estivermos no dir raiz do projeto (que inclui o prr):
+	
+			- javac -cp po-uilib.jar:. ´find prr -name "*.java"´
+			isto quer dizer que procura todos ficheiros que começam com prr e terminam com .java
+
+		para executar:
+
+			-java -cp po-uilib.jar:. prr.app.App
+
+
+
+TIPOS GENÉRICOS EM JAVA 
+	
+	public interface Collection<E>
+
+	quando estivermos a declarar a collection devemos indicar o seu tipo de elementos:
+
+		- Collection<String> Strings = new Collection<>(tamanho);
+
+		isto permite com que nao haja downcasts. Pois genericamente, as collections têm um tipo
+		que é dado logo na sua declaração.
+
+
+	Relacao entre collection<Animal> e Collection<Dog>. Nao existe
+
+
+	Mas podemos criar um collection de animais e por la cães e gatos. Para sabermos os tipos
+	podemos usar instanceof().
+
+
+(Collection)
+
+	set - representa um contentor em que nao ha elementos duplicados e nao se preserva ordem de 
+		inserção
+
+		hashset set com uma hash
+
+	lista - pode elementos duplicados e ordem de inserção preservada
+
+	fila - 	
+
+
+Collection é uma classe parametrica.
+
+
+	
+
+	
+
+
+
+
+	
+		
+	

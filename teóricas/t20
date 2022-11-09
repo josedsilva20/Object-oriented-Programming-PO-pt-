@@ -1,0 +1,97 @@
+TEMPLATE MEHTOD
+
+	Temos um metodo e depois definimos uma forma para esse algoritmo. essa forma é personalizada em cada objeto derivado.
+
+	objetivo:
+
+		definir esqueleto dum algoritmo numa operacao da superclasse
+
+		subclasses nao podem mudar a estrutura do algoritmo. para fazer x, executamos sempre y, z e w. é uma ordem. e por isso esse algoritmo é final.
+
+	consequencias
+
+		"Principio de HollyWood": don't call us, we'll call you.
+
+			codigo definido na superclasse invoca codigo definido nas subclasses
+
+		promove a reutilizacao de codigo.
+
+		permite alterar partes comuns de forma facil.
+
+		desvantagem: 
+
+			para cada comportamento distinto temos de criar um aclasse derivada
+			
+
+	temos a Receita para fazer uma bebida de café e uma para fazer um chá
+			café							chá
+		1 - ferver agua					1 - ferver agua					
+		2 - colocar café				2 - colocar chá
+		3 - colocar na chávena			3 - colocar na chávena
+		4 - adicionar açúcar			4 - adicionar limão
+
+	em termos de classes, fica como:
+
+		public class MakeCoffee{
+			public void MakeCoffee(){
+				ferverAgua();
+				colocarCafe();
+				colocarChavena();
+				adicionarAçucar();
+			}
+		}
+		public class MakeTea{
+			public void MakeCoffee(){
+				ferverAgua();
+				colocarCha();
+				colocarChavena();
+				adicionarLimão();
+			}
+		}
+
+	estas duas classes têm muita coisa em comum. ferverAgua() e colocarChavena() sao iguais.
+
+
+	Podemos ter uma classe abstrata:
+
+		__________________
+		<<abstract>>
+		BebidaQuente
+		__________________				MakeCoffee e MakeTee extendem BebidaQuente.
+		__________________
+		ferverAgua()
+		colocarChavena()
+		__________________
+
+	ESTAS NAO SAO AS ABSTRACOES CERTAS. Para resolver isso, devemos subir na hierarquia.
+
+
+
+	Em vez de dizer colocar cafe e colocar cha, criamos abstracoes que criam aquilo
+
+		__________________
+		<<abstract>>
+		BebidaQuente
+		__________________				MakeCoffee e MakeTee extendem BebidaQuente.
+		__________________
+		abstract colocaIngrediente()
+		abstract adicionaCondimento()
+		ferverAgua()
+		colocarChavena()
+		makeBebidaQuente()
+		__________________
+
+
+		ficámos com:
+
+			public final void makeBebidaQuente{
+				ferverAgua();
+				colocaIngrediente();
+				colocaChavena();
+				adicionaCondimento();
+			}
+
+
+	
+
+		

@@ -1,0 +1,9 @@
+Criar classe:
+	public class Caneta{
+		String cor;
+		String marca;
+		int qtdTinta;
+	}
+Ao criarmos uma nova caneta (Caneta c1) reserva-se em memória um espaço para o objeto.
+
+	c1 = new Caneta();

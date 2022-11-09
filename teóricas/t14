@@ -1,0 +1,113 @@
+PROJECTO
+
+	Já foi disponibilizada uma lista de testes públicos.
+
+
+ERROR HANDLING
+
+	Separamos ao máximo o código normal do código de excepções
+
+	Dizemos que cada situação anómala e tratada como uma excepção
+
+	A classe Exception.
+
+	Criamos instancias derivadas dessa classe.
+
+	Cada classe derivada de exception deve representar apenas uma situação anómala
+
+	Quando erro é detectado essa exception é "thrown"
+
+	Quando uma exception é "thrown" esta deve ser caught por um exception handler
+
+	Podem ser rethrown 
+
+	Ha dois tipos:
+
+		CHECKED:
+ 
+			representam situações excepcionais e que é suposto o programador ter especificado um código de excepções para essa situação.
+					
+			Ex: abrir um ficheiro
+
+	
+		ERRORS:
+	
+			Se quisermos apanhar podemos, mas nao ºe obrigatório:
+
+			ex: out of memory.
+
+		RUNTIME EXCEPTION
+
+			Situações de erro internas a aplicação (aplicação nao consegue ocorrer)
+
+			Tem haver com bugs.
+
+			ex: null pointer exception.
+	
+			Também não sao obrigatorias.
+
+
+
+		UNCHECKED:
+
+
+			erros e runtime sao unchecked.
+
+
+METODOS IMPORTANTES ESTAO NA PAGINA 11
+
+
+As classes exceptions do Projeto estão no app (n precisa definir), no core também ha mas temos que adicionar novas classes de excepção do código.
+
+
+Podem ter atributos (informação adicional. Ex: id de cliente nao existe), temos um atributo (id do cliente nao foi encontrado) e depois nos retorna excepções.
+
+
+As exceptions têm msg de erro através do getMessage 
+
+
+
+TRATAMENTO DE EXCEPCOES
+
+	Pomos 
+
+
+
+Sempre que um metodo invoca excepções do tipo checked, ou declara ou trata.
+
+	para declarar pomos na declaração do metodo a palavra throws aquele_metodo.
+
+
+	tratar significa fazer try e catch no código.
+
+		usamos quando sabemos o que fazer quando formos a excepção.
+
+	NAO TENTEMOS TRATAR A EXCEPCAO MUITO CEDO
+
+	Um try pode ter vários catch
+
+		Devemos começar sempre pela especifica e depois damos as mais genéricas
+
+
+	NUNCA DEIXAR UM CATCH VAZIO
+
+		se quisermos fazer isso, mais vale pormos um sop so para termos noção.
+
+	
+DEVEMOS INVOCAR OU O 2 OU 3 DA PAG 46
+
+Nao usar blocos try-catch com casos simples (atributos null)
+
+	Nesses casos usamos um if-else e sop
+
+Criar exceptions - pag 48
+
+
+BOAS PRATICAS
+
+	blocos try com tratamento de excepções iguais, fazemos "|" no catch.
+
+
+
+	
+	

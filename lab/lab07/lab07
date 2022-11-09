@@ -1,0 +1,11 @@
+EX1:
+
+Para compilar código que pertence a packages, temos de por package nome no inicio
+
+Quando compilarmos uma cena com packages fazemos:
+
+	javac -cp .. Main.java onde .. é o diretório onde esta o Main desta semana
+
+	assim compilamos o Main que consegue invocar outros subpackages.
+
+	javac -cp . `find po -name "*.java"`   

@@ -1,0 +1,109 @@
+Interação com o Utilizador é feito com os serviços 
+
+	para mostrar os clientes vai chamar uma função no back end e vai buscar e mostrar
+
+Dominio é o backend. Ele é que tem a lógica de funcionamento. So ha returns.
+	
+	executa funções chamadas nos Serviços e executa e retorna.
+
+
+
+
+O construtor da superclasse é sempre executado antes de tudo.
+
+Todas classes têm superclasse(Object)
+
+
+
+
+Invocação aos métodos da superclasse na subclasse
+
+	se nao houver override apenas escrevemos:
+
+		- metodo()
+
+	se estiver a ser substituído (override):
+
+		- super.metodo();	invoca o metodo herdado pela superclasse e nao o da subclasse
+
+	SUPER.SUPER. ... nao é possivel.
+
+
+OVERRIDE AND OVERLOADING
+
+	PAG26-27-
+
+	OVERRIDE apenas é feito quando temos mesmos args e mesmas definições
+
+				precisamos por super
+
+
+	OVERLOAD sobreposicao de metodos (novos argumentos)
+
+				nao precisamos por super.
+
+
+
+ESCONDER ATRIBUTOS
+
+	OVERRIDING pode ser feito com atributos. Isso serve para esconder.
+
+	para aceder a atributos da superclasse:
+	
+		super.atributo
+
+
+ACESS MODIFIERS E HERANCA
+
+	PAG31
+
+	protected methods sao usados para podermos usar nas classes derivadas
+
+		nao recomendado
+
+
+	methods private dao controle total da alteração dos detalhes de concretização.
+	
+		assim faz com que a sua alteração nao afecte outros códigos (onde esteja usado)
+
+
+	atributos protected nao preserva o principio de encapsulamento
+
+		o ideal é sempre privado e recorremos a gets() e sets()
+
+		vantagem de usar protected em atributos:
+
+			acesso directo pelas subclasses. Compensa no tempo. Mas NAO DEVEMOS FAZER
+
+
+	metods final
+
+		este metodonao pode ser substituido. Sempre é executado pelas classes derivadas
+
+			mas nunca é substituido neles.
+
+	Classes final 
+		
+		nao tem subclasses
+
+
+Dentro dos construtores nao devemos por metodos (se houver herança)
+
+	unicos metodos seguros para serem usados no construtor:
+		
+		private e final
+
+
+
+
+
+CLASSES ABSTRACT
+	
+	Nao ha instancias dessa classe. É uma generalização.
+
+	Nao podemos dizer:
+
+		Animal a = new Animal();  
+
+	
+

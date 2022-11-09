@@ -1,0 +1,151 @@
+COMPOSITE
+
+	Compor objetos em uma estrutura em arvore para representar hierarquias da parte de todo.
+
+	Permite tratar elementos simples e compostos de uma maneira uniforme
+
+
+
+	COMPONENT
+		especifica a interface para objetos na composicao
+
+		Pode ou nao definir comportamento por omissão
+		\
+	LEAF
+
+		Representa lea
+
+	COMPOSITE
+
+		Guarda os varios filhos
+
+		especifica comportamento de obj compostos
+
+		implementa operacoes relacionadas com os filhos 
+
+	CLIENTE
+
+		Manipula obj na composição usando a interface.
+
+	\
+
+CONSEQUENCIAS
+
+	Representa estruturas do tipo arvore. 
+
+	torna codigo cliente simples.
+
+	Novos tipo de componenentes podem ser acicionados sem acrescentar codigo a classe composite.
+
+	DESVANTAGENS
+
+		quando podemos ter varias classes leaf ha problema em definir comportamento comum.
+
+		nesses casos nao vale a pena aplicar
+
+		quando aplicamos o padrao, para o cliente ter acesso ao tipo (composite ou leaf) ele nao consegue aceder aos metodos do composite
+
+		a solucao é ao inves de ter os metodos no composite, definimos ao nivel do componente, assim o cliente invoca la mesmo. 
+
+		A desvantagem é quando ele for ao Leaf. 
+
+		O MELHOR É DESENHAR PARA TRANSPARENCIA
+
+
+
+	Temos um menu que tem itens e cada item tem preço e descrição
+
+	public class Menu{
+		private List<MenuItem> _itens=...
+
+		public int computePrice(){
+			int p = 0;
+			for (MenuItem it : _items)
+				p += ir.getPrice()
+		}
+	}
+
+	isto tem varias funcionalidades. Dependendo do tipo
+
+	Imaginemos a funcionalidade de saber se o menu era vegetariano. so seria vegan se todos os seus pratos sao vegamn. 
+
+	Iamos ter de fazer distincao de tipos. Objetos simples e compostos
+
+	O menu é um obj composto. é um grafo.
+
+	QUE ALTERAÇÃO FAZER PARA FAZER DESAPARECER ESSAS CONDICOES.
+
+
+	em termos de desenho, atualmente,
+
+
+		MenuItem <-----------Menu
+
+
+
+
+
+
+
+Apenas um comando necessita de criacao de formulario: o comando guardar.
+
+o comando guardar
+
+criar um formulario quando é preciso.
+
+	se é preciso entao:
+
+		Form f = new Form();
+			f.addStringField(----);
+		f.parse();
+
+
+formulario com apenas uma pergunta:
+
+	String res = Form.requestString(mensagem)
+
+	constroi o form com uma unica pergunta, preenche o campo e devolve a resposta.
+
+
+
+----------------------------
+
+ciclo comunicacao quando for VOICE OU VIDEO
+
+	usamos addOptionField("id", "mensagem", "opcao1", "opcao2")
+
+		quando temos um campo criado com addOptionField, cada vez que o user preencher o campo é alguma dessas opcoes. Se nao for uma das opcoes entao ele voltar a pedir
+
+		como o nr de argumentos nesse metodo nao é fixo:
+
+			a(int i, int j, String ... obj) ---> diz que temos dois inteiros e um array de Strings. Ele cria o array de forma automatica. o numero variavel de argumentos tem de ser o ultimo parametro.
+
+	para ir buscar o valor addStringField()
+
+
+
+------------------------------------------
+
+
+PRINCIPIO DO ABERTO/FECHADO
+
+	Objetivo:
+
+		tornar o codigo flexivel
+
+		deve ser aberto a extensao (concretizar novas funcionalidades atraves de novas classes)
+
+		fechado a modificacao (criar novas classes e nunca alterar o codigo existente)
+
+		evita bugs nas funcionalidades antigas.
+
+		Para seguir esse principio, a chave é a ABSTRAÇÃO
+
+
+	ex:
+
+		uma calculadora simples. tem expressoes e cada expressao tem 2 argumetnos int e um operador
+
+		
+
+

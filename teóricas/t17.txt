@@ -1,0 +1,204 @@
+	Collections com s. É uma classe. 
+
+		tem um método sort: Collections.sort(List<>) que ordena com a ordenação natural. Isto acontece quando concretiza a interface Comparable<> {p int compare (T obj)}
+	
+	Quando os elementos não concretizam o método de comparação, fazemos:
+
+		-Collections.sort(List<> c, comparator);
+
+	A interface List tem um método sort:
+
+		sort(comparator). Se comparator for null faz ordem natural, se não usa comparator.
+
+
+
+PADRÕES DE DESENHO
+
+	Objetivo é melhorar o desenho da aplicação.
+
+	apresenta uma solução generica para um problema recorrente que esta sempre a acontecer.
+
+	Têm varias secções. 
+	
+		1ª - objetivo do desenho
+
+		2ª - estrutura da solução
+
+		3ª - consequences (o que se ganha e o que se perde ao usa-lo)
+	
+	O seu nome é importante. 	
+
+		Deve ser o mais curto possível, mas descrevendo o padrão.
+
+
+
+EX:
+
+	SINGLETON
+	
+		objetivo:
+			
+			- fornecer/garantir que uma classe tem uma única instancia e todos clientes dessa classe so conseguem aceder a essa instancia.
+
+			- usamos em casos em que so faz sentido ter uma única instancia dessa classe. Para conseguir isso, o construtor tem de ser privado.
+
+		estrutura:
+			______________________________
+					Singleton
+			______________________________
+			_singleton: Singleton
+			______________________________
+			- Singleton()
+			+ getSingleton(): Singleton
+			______________________________
+
+		consequencias:
+
+			- criar uma variavel global. variaveis globais devem ser evitadas.
+
+			- so deve ser aplicado em situacoes muito restritas: garantir que so temos uma unica instacia dessa classe. Se esse requisito nao existe, nao devemos aplicar esse padrao.
+
+		Public class Singleton{
+			private static Singleton _singleton;
+
+			public static Singleton getSingleton(){
+				if (singleton == null)
+					_singleton = new Sinngleton();
+				return _singleton
+			}
+
+			private Singleton(){...}
+		}
+	
+
+
+	NULLOBJECT
+
+		a referencia nula pode sempre ser declarada em qqer tipo de variavel. E por isso...
+
+		ter variaveis com valor NULL faz com que tenhamos varias verificacoes if(var==NULL) e isso provoca muito codigo repetido.
+
+
+		Customer c = site.getCostumer();
+		BillingPlan plan;
+		if(c != null)
+			plan = c.getBillingPlan();
+		else
+			plan = BillingPlan.basic();
+		....
+		String customerName;
+		if (c != null)
+			customerName = c.getName();
+		else
+			customerName = "occupant";
+		...
+		int weeks;
+		if(c != null)
+			weeks = c.getWeeks();
+		else
+			weeks = 0;
+
+		Objetivo:
+
+			- colocar num unico sitio o comportamento "nao fazer nada(null)"
+
+			- tirar os ifs de verificacao de null.
+
+
+		Estrutura:
+	
+			______________________________
+				<< Interface >>
+				Abstract Customer
+			______________________________
+			
+			______________________________
+			+ getBillingPlan()
+			+ getCustomerName()
+			+ getWeeks
+			______________________________
+
+			Duas classes vao implementar essa: Customer, NullCustomer.
+
+			______________________________
+					Customer
+			______________________________
+			______________________________
+			+ getBillingPlan()
+			+ getCustomerName()
+			+ getWeeks
+			______________________________
+
+
+
+			______________________________
+					Null Customer
+			______________________________
+			______________________________
+			+ getBillingPlan()
+			+ getCustomerName()
+			+ getWeeks
+			______________________________
+
+
+			public class NullCustomer implements AbstractCustomer{
+				public String getName(){
+					return "Occupant";
+				}
+				public int weeks(){
+					return 0;
+				}
+			}
+
+			no construtor de customer (getCustomer()) ja nao se pode retornar null. geralmente este padrao é usado em junção com o Singleton.
+
+
+		Estrutura Genérica:
+
+			______________________________
+
+				AbstractClass
+			______________________________
+			______________________________
+
+			+ request()
+			______________________________
+
+
+			e uma ou varias classes que representam o real e o null object.
+
+			______________________________
+
+				RealClass
+			______________________________
+			______________________________
+			
+			+ request()
+			______________________________
+
+
+			______________________________
+
+				NullObject
+			______________________________
+			______________________________
+			
+			+ request()
+			______________________________
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

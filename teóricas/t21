@@ -1,0 +1,86 @@
+NESTED CLASSES (CLASSES ANINHADAS)
+
+	classe definida dentro de outra classe.
+
+	as classes de topo so podem ser packg private ou public.
+
+	na classe de dentro pode ou nao extender ou implementar outras.
+
+	as classes de dentro podem ser de todo tipo de modifiers e ainda podem ser static
+
+	a classe exterior pode referenciar qualquer membro da classe de dentro.
+
+	referencias a um obj da classe aninhada fora do contexto da classe exterior:
+
+		outerClass.NestedClass nesteClassReference;
+
+
+	obj
+
+		aumentar o encapsulamento dos dados
+
+		se uma classe apenas é usada no contexto da outra, usamos nested classes. mantemos num mesmo ficheiro. contributes to readable code.
+
+
+	CLASSES ANINHADAS ESTATICAS
+
+		Semelhante a um membro estatico de uma classe
+
+			tem acesso a variaveis estaticas e metodos estaticos da classe exterior mesmo sendo privados.
+
+			Pode aceder a membros nao estaticos (atributos nao estaticos) desde que haja instancias dela
+
+
+
+	CLASSES ANINHADAS NAO ESTATICAS (CLASSES INTERNAS)
+
+		Semelhante a um membro não estatico da classe exterior.
+
+		Cada instancia da nested class é associada a uma instancia da classe exterior.
+
+			Quando criamos um obj da classe interna no contexto de um metodo nao estatico da classe exterior, a referencia
+
+
+
+
+
+
+
+
+
+	TIPOS ESPECIAIS DAS CLASSES INTERNAS
+
+		CLASSE LOCAL
+
+			Classe interna declarada dentro do corpo de um metodo
+
+			So pode ser usada dentro desse mesmo metodo.
+
+			pode ser definida dentro de qualquer bloco. Acesso a todas as variaveis final desse bloco. Podemos aceder atributos da classe exterior e tambem vars e parametros.
+
+		CLASSES ANONIMAS
+
+			Classes sem nome.
+
+			Servem para definir uma classe com muito pouco codigo e ela será usada apenas naquele contexto muito especifico. Como é um contexto muito especiffico ela pode nao levar um nome. 
+
+			Tornam codigo conciso. Escreve-se menos codigo (nao escrevemos nome)
+
+			So ha uma unica instancia da classe
+
+			ela é declarada e instanciada ao mesmo tempo.
+
+			igual as classes locais mas a diferença é que nao tem nome
+
+			Faz sentido usa-la quando instanciamos a classe num unico sitio do codigo.
+
+			Syntax:
+
+				new InterfaceToImplement(){
+					attributes
+					interface methods
+					other methods
+				};
+				}
+
+

@@ -1,0 +1,23 @@
+public class ComandoDesenharCirculos extends Command<Editor>{
+    private ComandoDesenharCirculos(Editor edt){
+        super("Desenhar todos os circulos, ", edt);
+    }
+
+    protected void execute(){
+        List<Circle> allCircles = new ArrayList<Circle>();
+        for (Form f : _receiver.getForms()){
+            if (f instanceof Circle c) 
+                allCircles.add(c);
+        }
+        allCircles.sort(new ComparadorCirculo());
+        for (Circle c : allCircles)
+            _display.addLine(c.draw());
+        _display.display();
+    }
+}
+
+public class ComparadorCirculo implements Comparator<Circle> {
+    public int compare(Circle c1, Circle c2){
+        return c1.getRadius() - c2.getRadius();
+    }
+}

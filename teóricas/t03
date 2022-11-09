@@ -1,0 +1,115 @@
+As variáveis sao gravadas como:
+
+	tipo nome = valorInicial 
+
+		o valor inicial não é obrigatório. 
+
+Os atributos sao sempre inicializámos por omissão (0, nulo...)
+
+
+Os Parâmetros dos métodos recebem o valor dado como argumento.
+
+
+Locais sao declaradas dentro de um método e apenas sao usadas dentro desse local. 
+
+
+Constantes sao gravadas como final. Ex:
+
+	final int a = valor_inicial;
+		
+		valor inicial é obrigatório
+
+	As constantes final nao precisam ser tipos primitivos. Podem guardar referencias para 	objs:
+
+		final Caneta c = new Caneta(10);
+
+			Podemos modificar o estado da caneta mas nunca a caneta.
+
+	atributos também podem ser final.
+
+	atributos final podem ser inicializámos ou na declaração ou no construtor. SÓ!
+
+
+	
+	
+STATIC
+
+	uma Variável estatica é parecida com uma variável global em java. 
+
+	Variaveis estáticas devem ser evitadas.
+	
+	Há atributos estáticos que sao partilhados por todos os objetos e outros que n
+
+
+	Para declarar atributos static (também chamados atributos de classe):
+
+		private static int abc
+
+	STATIC - membros de class
+
+	Para acende-los:
+
+		Caneta.def; OU então: 	c.def. Sendo a primeira recomendada
+
+
+	Os atributos estáticos sao inicializámos uma única vez.
+
+		private static int abc = 23; pode ser assim, ou então:
+
+		podemos usar um bloco de inicializarão estáticos:
+
+			static {código com inicialização com os atributos.}
+
+			pode haver vários blocos static e sao executados pela ordem que sao declarados.
+
+	Quando temos constantes do tipo static, é uma constante definida para toda a app:
+
+		private final static int DEF = 3; o nome geralmente é em maiúsculas.
+
+
+	um método e estático quando é executado no contexto de uma classe e nao de um objeto.
+
+		ou seja HelloWorld.main(null) sendo helloworld uma classe. E nao um obj.
+
+
+	O método main tem que ser estático porque quando começamos o programa não há ...
+
+
+
+
+REGRAS DE CONVENÇÃO
+
+	É para tornar o código o mais legível possível.
+
+	CLASSES
+		
+		primeira palavra é um substantivo.
+
+		o nome deve ter um significado. A primeira letra de cada palavra em maiúscula.
+
+		
+		NomeDaClasse. 
+
+
+	METODOS
+
+		primeira palavra é um verbo/acção.
+
+		primeira palavra é minúscula e as restantes começam por maiúscula.
+
+			fazerCoisas()
+
+
+	VARIAVEIS
+
+		I, j k, l para indices.
+
+		o resto começa com substantivo em minúsculas na primeira palavra. E depois maiúscula
+
+		atributos começam com "_"
+
+		
+
+	
+
+

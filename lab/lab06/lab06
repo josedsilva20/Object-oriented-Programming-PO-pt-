@@ -1,0 +1,52 @@
+______________________________
+
+Empresa
+______________________________
+
+______________________________
+add(Funcionário)
+______________________________
+		|
+		|
+		|
+		|
+		|* unidericional empresa tem varios funcionarios
+______________________________
+
+Funcionario
+______________________________
+
+______________________________
+
+______________________________
+
+
+	Na classe funcionário temos qu reescrever o metodo equals.
+
+public class Empresa{
+    private Set<Funcionario> _funcionarios = new HashSet<Funcionarios>();
+
+    public boolean adicionar(Funcionario funcionario) {
+        return _funcionarios.add(funcionario);
+    }
+}
+
+public class Funcionario{
+    private String _nome;
+
+    public boolean equals(Object obj){
+        return obj instanceof Funcionario f && _name.equals(f._name);
+    }
+}
+
+
+Set <T> 
+	Escolhemos o set porque nao ha elementos duplicados (nao ha funcionários com 
+	mesmo id).
+
+	metodos importantes:
+		add(E): boolean
+	
+	HashSet <> : 
+	
+	TreeSet <>

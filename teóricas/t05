@@ -1,0 +1,92 @@
+Para indicar um long
+
+	53l ou 53L
+
+
+Para representar um double: 2.4d mas se for float: 2.4f
+
+
+Podemos representar constantes em varias bases:
+
+	hexa: 0x23423F
+	binario: 0b001110
+	octal: 01234567. Qualquer numero que começa com 0.
+
+Apenas há passagem por valor em funções.
+
+
+Public Caneta maior (Caneta c){
+
+	if (_qtd < c._qtd)
+		return c;
+	else
+		return this;
+}
+
+
+
+TIPOS PRIMITIVOS E IGUALDADE DE OBJETOS
+
+	Caneta c1, c2; String str1,str2; int x1, x2;
+
+	if (x1 == x2) retorna se os dois ints sao iguais
+
+	if (str1 == str) retorna se a referencia é igual e nao se as strs sao iguais.
+	
+		para comparar objetos são iguais usamos o método boolean equals(obj):
+
+			if (str1.equals(str2));
+
+
+
+REUTILIZAÇÃO DE CODIGO
+
+
+	há tres mecanismos para reutilizar:
+
+		- invocar um método dentro de outro
+
+			public class Rectangle{
+				int origem x; origem y; int destinox, destinoy;
+			}		
+
+			mas isto ficaria mais simples se fizéssemos:
+	
+			public class Rectangle{
+				Ponto origem; Ponto destino;
+			}		
+
+			
+
+	
+
+		- Construir uma classe à custa de outra que já existe (Composição - tem um ou mais)
+
+
+				______________.              ______________
+			   |	retangulo |------------- |	Ponto.     |. (bidirecional) Os rects conhecem os
+			   |_____________|.             |_____________| Ps e Ps sabem em quantos rect estão.
+
+
+				______________.              ______________
+			   |	retangulo |------------->|	Ponto.     | significa que retangulo tem 2 pontos
+			   |_____________|.            2|_____________|	(unidirecional). So na classe rect
+																  é que temos ponto. A classe ponto 
+																  não tem conhecemento dos rects.
+
+
+				podemos representar as quantidades como:
+
+					- n -> numero 
+					- 0..5 -> entre 0 e 5
+
+		- Uma classe herdar código de outra classe (Herança - é um)
+
+
+
+
+
+
+
+
+

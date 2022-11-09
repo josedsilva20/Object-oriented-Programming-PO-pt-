@@ -1,0 +1,42 @@
+HERANÇA
+
+	Quando uma classe herda da outra:
+
+		public class B extends class A
+		
+		A classe B herda todos os atributos e todos os métodos de A
+
+		Todos atributos não estáticos serão herdados por B
+
+		Atributos estáticos so fazem parte da superclasse
+	
+		a classe derivada pode substituir metodos herdados (override)
+
+			geralmente se escreve @override
+
+			sempre que estivermos a substituir um método devemos por @override por cima
+
+			isto permite que se evite erros.
+
+		o facto de B herdar tudo, nao quer dizer que tem acesso directo a eles.
+
+			na classe B nao conseguimos aceder a coisas private do A ou packages difs.
+
+		ESCREVER PAGINA 13
+
+
+	Todo o codigo escrito em Java esta ligado a uma classe. 
+
+	Todas as classes tem sempre uma superclasse, excepto a Object
+
+	A classe Object tem métodos importantes que estão definidos:
+
+		toString, equals, hashCode, clone, getClass.
+
+		Geralmente nas classes derivadas esses métodos sao rescritos.
+
+	Uma Subclasse so pode ter uma Superclasse (Herança Simples)
+
+	ESCREVER PAGINA 21
+
+	

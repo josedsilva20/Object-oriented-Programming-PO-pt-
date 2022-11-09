@@ -1,0 +1,117 @@
+INTERFACES 
+	
+	Abstracao que permite especificar contratos que devem ser obedecidas pelas classes
+
+	"estes objs conhecem estes metodos" mas nao sao mostradas la 
+
+	Apenas especifica as funcionalidades e nao as suas implementações
+
+	Acontece quando uma classe A por vezes quer se comportar como um B e outras como C
+		Sem ser por herança. É uma espécie de herança múltipla. Pode se cumprir mais
+		de um contrato.
+
+	Interfaces definem tipos onde se especificam:
+
+		- constantes (como se fossem public final static);
+
+		- assinaturas de metodos (como se fossem public abstract methods)
+
+		- metodos estaticos;
+
+		- Podemos definir corpos de metodos. Oferecer aos metodos uma concretização por 
+			omissao.
+
+	Os metodos sao publicos mesmo que nao se ponha public
+
+	os metodos nao default e nao estáticos sao abstract sempre. 
+
+	PAG4
+
+	Declaração:
+		public interface InterfaceName{COISAS A FAZER}
+
+	EXTEND é com herança de classes e IMPLEMENT é com interfaces.
+
+		- public class Example implements interface1, interfaceN
+
+	Se houver algum metodo na interface que nao esta a ser definido na classe da erro
+
+	EX:
+
+		Sort(Element[] e) {
+			if (e[I].CompareTo(e[I+1])
+
+	Interfaces podem herdar de outras interfaces
+		- a interface derivada herda todos os atributos e metodos da superclasse.
+
+	
+	Quando uma classe implementa duas ou mais interfaces que declaram o mesmo metodo (em
+	bora que com tipos de retorno diferente dá um erro de compilação
+
+	Razao para metodos default:
+		
+		- para poder adicionar um novo metodo a uma classe e uma nova concretização.
+			isto permite que clientes que nao atualizam para a ultima versão nao deixem
+			de usar a aplicação. Usam so que com menos funcionalidades.
+
+		- se a classe nao concretiza um metodo então usa-se a especificação na interface
+
+	Interfaces servem para  escrever metodos que funcionam para mais do que um tipo de 
+	classes
+
+
+TIPOS ENUMERADOS
+
+	tipo de objetos(dados) com numero fixo de valores a usar. 
+
+	sao classes com numero limitado de instancias public static final
+
+	sao efectivamente final. 
+
+	ninguém pode criar instancias desse enumerado.
+
+	PAG21.
+
+	essa variável apenas tomará um valor.
+
+	declaração:
+
+		- public enum Name { VALUE1, VALUE2, ..., VALUEn;)}
+
+	para aceder:
+
+		- Name.Value1;
+
+	geralmente é posto num ficheiro .java à parte.
+
+	EX:
+		- public enum DayOfWeek{MONDAY, ..., SUNDAY;}
+
+	Enumerados sao comparados com "=="
+
+	metodo values() retorna um array com os valores do enum
+
+	metodo toString() retorna o nome declarado em cada valor do enum
+
+	
+	Como enumerados sao classes, têm características de classes.
+
+	Construtores precisam ser privados.
+
+	Podemos adicionar atributos a enums. Esses atributos sao inicializámos no constutor
+
+	Para invocar o construtor:
+
+	ESTA EXPLICADO NA PAGINA 24
+
+
+	DICA: 
+		Usar enum em vez de constantes.
+
+
+	
+
+	
+
+	
+	

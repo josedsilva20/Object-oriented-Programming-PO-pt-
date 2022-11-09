@@ -1,0 +1,57 @@
+CLASSES ABSTRATAS
+
+	public abstract A {...}
+
+	Classes abstratas nao podem ser instanciadas.
+
+	Podem ter metodos abstratos (metodos sem corpo e so com declaração)
+
+		vantajoso porque qualquer classe que herde é obrigada a implementar.
+
+		public abstract void doSomething; 	---> declaração
+
+	Podem ter as mesmas coisas que as classes normais. Mas...
+
+		nao podemos instanciar objetos de uma classe abstrata
+
+		os metodos sao abstratos
+
+		métodos estáticos, private e final nao podem ser abstratos
+
+	quando extendemos classes abstratas com metodos abstratas:
+
+		precisamos override de todos esses metodos, senao a subclasse precisa ser
+			abstrata.
+
+	
+
+COMPATIBILIDADE DE TIPOS
+
+	
+	UPCAST 
+		subir na hierarquia. É o seguro. 
+	
+		converter para um tipo. 
+		
+			EX: C extends B e B extends A.
+					C c = new c();     A a = c; 
+						isto é valido porque o c pode ser visto como um A.
+
+	DOWNCAST
+		descer na hierarquia
+
+		EX: C extends B e B extends A.
+					C c = new c();     A a = c;   C c1 = a
+						isto é invalido porque o c nao pode ser visto como um A.
+
+				para funcionar:
+
+					precisamos fazer C c1 = (c)a;
+
+
+PROTECTED
+
+	
+
+
+

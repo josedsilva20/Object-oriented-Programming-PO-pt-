@@ -1,0 +1,60 @@
+Há dois tipos de dados em java
+
+	- tipos primitivos: int, double, ....
+
+	- tipos referencia: String, objeto...
+
+	A diferença entre esses dois tipos está na declaração:
+	
+		- o que guardo na var é o proprio valor (primitivos)
+
+		- na var fica guardada a referencia para um objeto.
+
+
+Controlar acesso aos atributos:
+
+
+	Encapsulamento dos dados. Permite:
+	
+		- esconder detalhes de concretização
+		
+		- gerir níveis de acesso: public, private, package, protected.
+
+		- DEVEMOS por assim os ATRIBUTOS como private. Assim garante valores coerentes.
+
+		- METODOS representar detalhe de concretização então deve ser private.
+
+
+
+
+garantir valores coerentes na criação do obj:
+
+	temos de criar construtores:
+	
+		- nome do método é o nome da classe. Nao tem valor de retorno. Ex:
+
+			-public Caneta(int q, String m){
+				quantidade = q;
+				marca = m;
+			}
+		
+		- pode haver mais do que uma declaração de construtor. Apenas precisa ter nº Dif de argumentos 
+
+	
+
+
+
+Modificador		Mesma		Classe_no_package	Subclasse		Mundo	
+
+Public				y					y					y			y
+
+Private			y					n					n			n
+
+No-modifier		y					y					n			n
+
+Protected			y					y					y			n
+
+
+
+	
+

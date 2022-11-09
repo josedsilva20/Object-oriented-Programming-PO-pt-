@@ -1,0 +1,105 @@
+	ls - lista o conteúdo de um dir. -al
+
+		x é um executável. Ou um diretório em que podemos entrar
+		
+			1º user, segundo é o grupo e ultimo é todos os outros.
+
+		alterar privilégios:
+		
+			- shmod nivel_de_proteção nome. 
+
+Cd 
+	cd ~username nos leva ao Home dir desse user indicado.
+
+
+
+Copiar ficheiros.
+
+	cp abc.txt a.txt. isto faz copy no mesmo diretório.
+
+	cp abc.txt ../a.txt
+
+	se estivermos a copiar um diretório ele dá um erro de execução.
+
+	para copiar diretórios:
+
+		- cp -R a b 
+
+
+Para mudar o nome:
+
+	mv abc.txt ../e.txt
+
+
+Para apagar:
+
+	rm abc.txt
+
+	com este comando nao da para voltar para trás .
+
+
+* significa zero ou mais caracteres.
+
+	rm *.txt
+
+? Significa numero restrito de caracteres.
+
+	rm a?.txt
+
+
+Aconselha-se sempre a usar o -i antes do mv, cp ou rm para ele perguntar antes.
+
+	Esses comandos são irreversíveis.
+
+
+Para saber todos os alias activos: alias na linha de comando.
+
+
+Configurar shell do Mac:
+
+
+	- echo §SHELL permite saber o shell que corremos.
+
+	- cat ~/.zshrc para ver o ficheiro de configuração da Shell.
+
+
+Variáveis que começam com $ são variáveis de Ambiente.
+
+	- Para aceder a uma variável de ambiente usamos $nome.
+
+	- Para ver todas as vars de ambiente:
+
+		- env
+
+Para ver o conteúdo de um ficheiro:
+
+	- less nome.
+
+	- para sair fazemos quit
+
+	- podemos também usar o more.
+
+
+O $PATH guarda todos os comandos que nós damos no terminal. 
+
+
+Para alterar o valor de uma var do ambiente em bash:
+
+	- export var = novo_valor
+
+Para adicionar um diretório ao PATH:
+
+	- PATH = $PATH ":dir4" e isso adiciona ao fim.
+
+	- PATH = ":dir4" $PATH adiciona ao início.
+
+
+
+Argc nº de argumentos.
+
+argv vector com todos os argumentos.
+
+
+Em java, é semelhante. Mas temos apenas um argumento que é o String[] argv.
+
+	

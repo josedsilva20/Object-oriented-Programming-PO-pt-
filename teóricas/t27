@@ -1,0 +1,58 @@
+FAÇADE (Fachada em frente da biblioteca)
+
+Objetivo:
+
+	definir uma interface de alto nivel simplificando os processos de concretização
+
+	este padrão é usado quando temos um sistema usado pelos clientes tem um máu desenho e muitos bugs, recomenda-se o uso deste padrão. 
+
+
+Motivação:
+
+	public class Cup {
+		private Liquid _liquid;
+
+		private List<Condiment> _condiments = new ArrayList<>();
+
+		public Cup(){}
+
+		public boolean isEmpty(){return _liquids == null && _condiments.isEmpty();}
+
+		public void add(Liquid l) throws FullException{----}
+		public void add(Condiment c){----}
+		public void wash(){----}
+
+	}
+
+
+	para fazermos um chá
+		
+		Cup cup = new Cup();
+		Water water = new Water();
+		w.boil();
+		cup.add(water);
+		TeaBag bag = new TeaBag("Apple and Cinnamon");
+		cup.add(bag);
+		cup.add(new Sugar(8));
+
+
+	isto provoca com que a pessoa que esta usar as funcionalidades saiba como fazer as coisas, o que nao é correcto.
+
+	Devemos criar uma entidade a obrigar a que uma pessoa que cria um choc quente ou um cha nao precisar perceber como as coisas sao feitas.
+
+
+
+	para resolver isso precisamos: 
+
+
+
+
+
+
+
+
+
+
+
+
+INTERFACES SAO PARA QUANDO QUEREMOS VARIAS BIBLIOTECAS COM CONCRETIZACOES DIFERENTES

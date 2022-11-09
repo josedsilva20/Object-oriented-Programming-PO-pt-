@@ -1,0 +1,183 @@
+queremos fazer um controle remoto, que tem botoes e cada botao estará associado a uma determinada funcionalidade
+
+	1 - ligar tv
+	2 - desligar tv
+	3 - ligar luzes
+	4 - desligar luzes
+	5 - desligar tudo
+
+	public class RemoteControl{
+		public Tv _tv;
+		public Ligth _ligth;
+
+		public void buttonPress(int botao){
+			switch(botao){
+				case 1 -> tv.turnOn();
+				case 2 -> tv.turnOff();
+				.......
+				.......
+			}
+		}
+	}
+
+
+	Para solucionar esse problema, devemos criar uma abstracao que representa o pedido de execução de uma acção.
+
+
+
+	public abstract class Command {
+		private String _name;
+
+		public Command(String name){
+			_name = name;
+		}
+
+		public abstract void execute();
+	}
+
+	public Class LigarTv extends Command{
+		private Tv _tv;
+
+		public LigarTv(Tv tv){
+			super("Ligar tv");
+			_tv = tv;
+		}
+
+		public void execute(){
+			_tv.turnOn();
+		}
+	}
+
+	public class DesligarTv extends Command{
+		private Tv _tv;
+
+		public DesligarTv(Tv tv){
+			super("Desligar tv");
+			_tv = tv;
+		}
+
+		public void execute(){
+			_tv.turnOff();
+		}
+	}
+
+	Assim a nova versão do RemoteControl guarda  fica:
+
+		public class RemoteControl{
+			public List<Command> _options;
+			public Tv _tv;
+			public Ligth _ligth;
+
+			public RemoteControl(List e){
+				_options = l;
+			}
+
+			public void buttonPress(int botao){
+				_options.get(b).execute();
+			}
+		}
+	
+	Geralmente os comandos nao sabem fazer as coisas. Os comandos estao associados a uma dada entidade. Podemos refactorizar ainda mais. 
+
+	Podemos transformar a classe Command numa classe Paramétrica:
+
+
+		public abstract class Command<Receiver> {
+		private String _name;
+		private Receiver _receiver;
+
+		public Command(String name, Receiver r){
+			_name = name;
+			_receiver = r;
+		}
+
+		public abstract void execute();
+	}
+
+	public Class LigarTv extends Command<Tv>{
+		private Tv _tv;
+
+		public LigarTv(Tv tv){
+			super("Ligar tv", tv);
+		}
+
+		public void execute(){
+			_tv.turnOn();
+		}
+	}
+
+	public class DesligarTv extends Command<Tv>{
+		private Tv _tv;
+
+		public DesligarTv(Tv tv){
+			super("Desligar tv", tv);
+		}
+
+		public void execute(){
+			_tv.turnOff();
+		}
+	}
+
+	public Class LigarLuz extends Command<Luz>{
+		private Luz _luz;
+
+		public LigarLuz(Luz luz){
+			super("Ligar luz", luz);
+		}
+
+		public void execute(){
+			_luz.turnOn();
+		}
+	}
+
+
+	Podiamos ainda por o receiver como atributo final e assim factorizava ainda mais:
+
+
+	public abstract class Command<Receiver> {
+		private String _name;
+		private Receiver _receiver;
+
+		public Command(String name, Receiver r){
+			_name = name;
+			_receiver = r;
+		}
+
+		public abstract void execute();
+	}
+
+	public Class LigarTv extends Command<Tv>{
+		private final 
+		public LigarTv(Tv tv){
+			super("Ligar tv", tv);
+		}
+
+		public void execute(){
+			_receiver.turnOn();
+		}
+	}
+
+
+
+Solucao é representar um pedido como sendo um objeto
+
+Suportar o undo e redo.
+
+
+
+METODOS IMPORTANTES PARA O DISPLAY
+
+	usamos add para adicionar ao display e addLine que acrescenta um /n.
+
+	quando quisermos escrever apenas uma str, fazemos popup(objet ou string) e assim nao precisamos invoccar o display
+
+	Quando a msg estiver concluida, invocamos o display para mostrar os dados.
+		- fazemos _display.display()
+
+	Se tivermos um array de objetos e quisermos imprimir, e num ciclo invocamos o toString do elemento, usamos o metodo _display.addAll(collection<>)
+
+
+
+O comando tem uma variavel Form _form que é um formulario que recebe dados do utilizador.
+
+Quando o execute é executado, o form é preenchido. No ocnstrutor de command temos de especificar os campos daquele formulario. 

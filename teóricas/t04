@@ -1,0 +1,93 @@
+Os tipos primitivos de dados têm uma versão em classe
+
+
+Auto boxing 
+		
+
+Auto unboxing
+
+
+A classe Integer tem um método interessante:
+
+	Integer.parseInt(String s) que retorna um int correspondente a essa str.
+
+	Integer.valueOf(String s) retorna um Integer correspondente à str.
+
+
+
+ARRAYS
+
+	
+	tipo[] nome; ou tipo nome[];		A melhor é a primeira.
+
+
+
+	Para alocar um array:
+
+		tipo[] nome = new tipo[dimensão]
+
+
+
+	Ao aceder a uma posição do array, o java verifica se o índice é valido. 
+
+		Se estiver fora desse limite da erro.
+
+
+	Para saber o tamanho: 
+	
+		array.length. Onde legth é um atributo final.
+
+
+	N\ao podemos alterar os tamanhos dos arrays. Apenas copiar para um novo e maior.
+
+	
+	Iterar arrays:
+
+		for (int i = 0; I < s.length; I++).  Ou então o for each:
+
+		for (String str: s). Começa na primeira posição e termina na ultima.
+
+		A primeira é a melhor. Na segunda nao conseguimos modificar, apenas aceder.
+
+		
+
+ARRAYS BI-DIMENSIONAIS
+
+	declaração:
+
+		int [][] matriz;
+
+
+
+	inicializar:
+
+		matriz = new int [10][20];
+
+
+
+		isto significa que temos um array com 10 referencias para 10 arrays de 20 posições.
+
+
+
+		matriz = new int [20][]; isto permite que os arrays da segunda dimensão tenham dim 
+			diferentes.	
+
+
+
+A classe String permite criar um obj sem usar o operador new. Ex:
+
+	String str = "abc";
+
+	As Strings são imutáveis. 
+
+
+
+	
+
+		
+
+	
+
+	
+
+	

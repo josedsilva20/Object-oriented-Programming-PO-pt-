@@ -1,0 +1,157 @@
+Para o Projeto falta:
+
+	exceptions e também I/O
+	
+	aula de quarta é de apoio ao projeto
+
+ITERANDO UMA COLECAO
+
+	Usamos uma classe Iterator.
+
+	tem 3 metodos:
+
+		boolean hasnext diz se tem mais elementos a iterar
+
+		E next() devolve o proximo:
+
+		void remove remove o atual
+
+	criar um iterado:
+
+		usamos um foreach(tem nos slides), ele cria o iterador de forma implicita
+
+	não podemos modificar a coleção e continuar a iterar. Precisamos 
+	fazer break. Porque senão da erro de compilação.
+
+	se tentarmos retirar varios:
+
+		criar duas coleções
+
+			uma que guarda os a remover, e depois se invoca o remove na outra
+
+		iter.remove()
+
+
+
+SET
+
+	Garante que nao ha elementos repetidos através do método equals
+
+	Não mantém a ordem de inserção
+
+	As otimizações de set são eficientes. Aceder a elementos (saber se existe tal elemento)
+
+	A ordem de iteração não tem a ver com ordem de inserção
+
+
+SortedSet 
+
+	Os elementos estão guardados com uma certa ordem (ordem natural)
+
+	Para ordenar, usamos um comparator que define uma ordem:
+
+		ler slide Comparator<E> example
+
+CUIDADO
+
+	o comportamento de um set nao esta definido para quando mudamos um elemento para ser igual a um outro (que pode ter existido)
+
+	no hashset .... Slides.
+
+
+HashSet
+
+	Set usando tabela de dispersão
+
+	importando usar o método equals(Object)
+
+	hashCode(){valor de dispersão.}
+
+	o método equals e hashCode devem ser coerentes. Objetos iguais retornam o mesmo hashCode().
+
+
+TreeSet
+
+	Set usando uma arvore
+
+
+LIST
+
+	add adiciona sempre (duplicado ou nao) e mete no fim
+
+	preserva ordem de inserção
+
+	ListIrerator permite iterar para frente e para tras.
+
+ArrayList
+
+	Lista usando um Array
+
+	Melhor em casos: aceder posição, adicionar no fim
+
+	size incrementa automaticamente
+
+	na criação podemos ou nao inicializar (recomendado)
+
+	operações eficientes:
+
+		aceder ao conteúdo 
+
+		aceder sequencialmente a lista
+
+		adicionar ao fim 
+
+		remover ultimo elemento
+
+	operações más:
+
+		retirar de uma posição aleatória (no meio por ex)
+
+		Checking membership
+
+
+LinkedList
+
+	Lista duplamente ligada.
+
+	eficiente:
+
+		aceder elementos de ordem sequencial 
+		remover qualquer elemento
+		adicionar elementos a qualquer posição..... Slides
+
+
+MAPA<k, v>
+
+	guarda pares de chave valor. Ex: dicionário
+
+	não ha chaves duplicadas. Os valores podem estar duplicados.
+
+	metodos importantes:	
+		V put(K key, V value)
+
+		V remove(Object key)
+		
+		void clear() limpa tudo
+
+	V get(Object key) retorna o valor associado
+
+	boolean containsKey(object key).... Ver nos slides todos 
+
+	keySet é importante!!
+
+
+HashMa<k,v>
+	usando uma hash table.
+	mais eficiente que treemap.
+
+treeMap<k,v>
+	esta ordenado
+
+
+Para iterar mapas
+
+	
+	
+
+	

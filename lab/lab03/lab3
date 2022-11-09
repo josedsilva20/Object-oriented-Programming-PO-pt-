@@ -1,0 +1,119 @@
+
+
+EX2
+
+	_____________________________________________________________
+					Caneta
+	_____________________________________________________________
+
+		-	_tinta: int
+		-	_cor: String
+
+	_____________________________________________________________
+
+		+	Caneta(tinta:int, cor: String, marca: Marca)
+		+	
+	_____________________________________________________________
+			| * / 0..1000
+			|
+			|
+			|
+			| 1
+	_____________________________________________________________
+					Marca
+	_____________________________________________________________
+
+		-	_nome: String
+		-	_ano: int
+		-	_nCanetas: int
+	_____________________________________________________________
+
+		+	fabricaCaneta(qtd:int, cor: String): Caneta
+		+	Mafca (n: String, a: int)
+	_____________________________________________________________
+
+
+
+
+Caneta(int q, String cor, Marca m) {
+	_quantidade = q; 
+	_cor = cor;
+	_marca = m;
+}
+
+
+public class Marca{
+    private String _nome;
+    private int _ano;
+    private Caneta[] _canetas;
+    private int _nCanetas;
+
+    public Marca(String nome, int ano){
+        _nome = nome;
+        _ano = ano;
+        _canetas = new Caneta[1000];
+    }
+
+    Caneta fabricaCaneta(int quantidade, String cor){
+        Caneta c = new Caneta(quantidade, cor, this);   /*  this executa fabricaCaneta
+																		na marca.    */
+        _canetas[_nCanetas] = c;        /*  podemos fazer   
+									_canetas[_nCanetas++] = c; e assim linha a segir baza */
+        _nCanetas++;
+        return c;
+    }
+}
+
+
+-----
+ EX5 |
+-----
+
+	_____________________________________________________________
+					Numero
+	_____________________________________________________________
+
+		-	_valor: int
+	_____________________________________________________________
+
+		+	Numero()
+		+	Numero(valor: int)
+		+	obtemNumero()
+		+	equals(n: Numero): boolean
+		+	devolveMaior(n: Numero): Numero
+		+	toString(): String
+	_____________________________________________________________
+
+
+
+public class Numero{
+    private int _valor;
+    
+    public Numero(int valor) {
+        _valor = valor;
+    }
+
+    public Numero(){
+        /* Valor por omissão é zero */
+    }
+
+    public  int obtemNumero(){
+        return _valor;
+    }
+
+    public Numero devolveMaior(Numero numero){
+        if (_valor <= numero._valor)
+            return numero;
+
+        return this;
+    }
+    
+    public String toString(){
+        return "" + _valor;         /* Converte o numero numa string. Concatena */
+    }
+
+    public boolean equals(Numero numero){
+        return _valor == numero._valor;
+    }
+}
+

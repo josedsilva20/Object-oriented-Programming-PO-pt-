@@ -1,0 +1,79 @@
+DECORATOR
+
+	obj:
+
+		adicionar responsabilidades a objetos individuais e nao a classes inteiras.
+
+		Responsabilidades dinamicas a objetos dinamicos
+
+		adicionar em tempo de execucao novas funcionalidades a um tipo de objeto.
+
+		evita a explosão de classes que são criadas.
+
+
+	CONSEQUENCIAS
+
+		extende a funcionalidade dos objetos em tempo de execucao.
+
+		é uma alternativa flexivel ao uso de herança
+
+	DESVANTAGENS
+
+		codigo fica com muitos objetos pequeninos, muitos decoradores.
+
+		precisamos fazer new de varios decoradores ate chegar ao new do objeto pretendido
+
+		so funciona bem para adicionar novas responsabilidades ao objeto.
+
+		tentar tirar responsabilidades de um objeto da problema
+
+		dificil saber se dois decoradores sao iguais. Nao podemos usar "=="
+
+
+	MOTIVACAO
+
+		uma classe window que é abstrata e as Classes AlertWindow, EditWindow e TextWindow sao derivadas dela
+
+
+		_____________________
+			<<abstract>>
+				Window
+		_____________________
+
+		_____________________
+		<<abstract>> draw()
+		_____________________
+
+
+
+
+		criamos uma classe chamada WindowDecorator que é abstrata que deriva de Window. Nela sao substituidos todos os metodos que têm em Window. Ela é respondavel por estar associado a uma entidade janela e apenas vai fazer _decorado.draw(). onde decorado é o objeto que se está a decorar. Border, ScrollBar herdam de WindowDecorator
+
+
+		public class Border extends WindowDecorator{
+			public Border(Window window){
+				super (window);
+			}
+
+			public void draw(){
+				//desenhar um border.
+				//dizer ao obj a decorar para desenhar
+				Super.draw(); //diz ao obj desenhado para ele se desenhar
+			}
+		}
+
+		Para scorllBar seria a mesma coisa so que onde tem Border fica com ScrollBar
+
+
+
+
+		Para criar um alertWindow com Border:
+
+			new Border(new AlertWindow());
+
+		Se quisermos ter um textWindow com Border e Scrollbar:
+
+			new Border(new ScrollBar(new(TextWindou())));
+
+		Este tipo de coisa permite-nos ainda que consigamos criar Borders duplos ... e muitas vezes
+

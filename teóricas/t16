@@ -1,0 +1,18 @@
+O Parsing é feito no core através de uma entidade
+
+No construtor do tarifario temos que por o nome
+
+	melhor esquecer o tarifário. Podemos fazer sem ela.
+
+makeVoice, makeVideo, acceptVideo deve ser editado em cada tipo de terminal. Por causa das excepções. Excepções que vai ser criadas sao ao nível do core
+
+Make e accept: voice por ex:
+
+	tem dois terminais envolvidos (from e to). O make e sempre invocado no from
+		
+		posso fazer?
+			se nao abortar.
+
+			se sim, to.acceptVoice() e mudar de estado.
+
+	

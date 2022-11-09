@@ -1,0 +1,48 @@
+_________________________________						_________________________________
+|										|-------------------|										|
+|										|			      1*  |________________________________|
+|________________________________|	
+_________________________________
+|										|
+|										|
+|										|
+|										|
+|________________________________|	
+_________________________________
+|										|
+|										|
+|										|
+|										|
+|________________________________|	
+
+
+
+Relações podem ser unidirecionais
+
+	so as instancias de rectângulo sabem os pontos associados e os pontos nao 
+
+
+
+COMPOSICAO
+
+	Retangulo torna-se cliente de ponto no sentido em que usa o código de ponto
+		para definir as funcionalidades
+
+		Deve-se delegar responsabilidade a classe ponto 
+
+		Nao tentar fazer algo que pertença a outra classe.
+
+		Nao deixar a classe cliente alterar os atributos do ponto
+
+		Se a classe cliente quiser modificar tem que modificar com métodos
+
+		NUNCA devolver referencias nos metodos
+
+			Devemos devolver um novo objeto com uma copia do original.
+
+
+HERANCA
+
+
+	
+

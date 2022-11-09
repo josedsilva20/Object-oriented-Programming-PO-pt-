@@ -1,0 +1,118 @@
+	objetivo:
+
+		criar uma abstração para criar familias de objetos dependentes relacionados.
+
+	consequencias:
+
+		classe cliente apenas lida com as abstrações e nunca com as classes concretas
+
+		torna facil a troca de familias de produtos, mudando apenas a fabrica com que vai funcionar
+
+		promove a coerencia entre os produtos
+
+	desvantagens:
+
+		se por acaso pudermos adicionar novos tipos de produtos, alterando assim o codigo antigo e acrescentando um novo metodo em todas as classes que implementam a abstração.
+
+	imaginar um jogo com um conjunto de abstrações que é o cenário
+
+	No ponto de vista do cenario vamos ter:
+
+		Cenario
+			- Inimigo
+			- Boss
+			- Veiculo
+	
+		imaginando um cenario que é uma cidade:
+
+		Cidade
+			- Humano
+			- Padrinho
+			- Carro
+
+		imaginando um cenario que é o espaço:
+
+		Espaço
+			- Alien
+			- DarthVader
+			- Nave
+
+		imaginando o cenario Campo:
+
+		Campo
+			- Militar
+			- General 
+			- Tanque
+
+
+	Teremos uma classe jogo:
+
+		public class Jogo{
+			add(Enemy);
+			add(Veiculo);
+			set(Cenario);
+			add(Boss);
+		}
+
+		algures existe um metodo para fazer a configuração do jogo:
+
+		public void configura(String cenario, int ni, int nb, int nv){
+			if (cenario.equals("Campo")){
+				-----------
+			}
+	esta abordagem tem duas desvantagens:
+		- nao obedece ao principio do aberto/fechado
+
+		- nao garante coerencia dos varios objetos produto que se estao a criar
+
+		- a classe que cria entidades cria uma dependencia na classe jogo.
+
+
+	como criar uma abstração que garanta a coerencia dos objetos criados e corta a dependencia com as classes concretas?
+
+		- criar um abstração para criar objetos!
+
+	_____________________________
+			GameFactory 
+			<<interface>>
+	_____________________________
+	_____________________________
+	+ createEnemy(): Enemy
+	+ createVeiculo(): Veiculo
+	+ createBoss(): Boss
+	+ createScenary(): Scenary
+	_____________________________
+
+
+
+	_____________________________
+			CityGameFactory					implementa gamefactory
+	_____________________________
+	_____________________________			vai ser responsavel por criar os objetos relacionado
+	vai substituir todos os metodos			s com a cidade (Humano, padrinho, carro)
+	de Gamefactory
+	_____________________________
+
+
+	A classe jogo fica:
+
+		public class Jogo{
+			add(Enemy);
+			add(Veiculo);
+			set(Gamefactory);
+			add(Boss);
+
+			public void configura(int ne, int nb, int nv){
+				for (int i = 0; i < ne; i++)
+					add(_gameFactory.createEnemy())
+				----
+				----
+				----
+				---- etc
+			}
+		}
+
+
+
+
+

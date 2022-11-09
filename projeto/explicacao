@@ -1,0 +1,70 @@
+Todas as entidades de dominio
+	
+	atributos
+	
+	metodos
+
+	relações		---> composição e herança
+
+
+existe um esqueleto da aplicação
+
+	tem um conjunto de entidades em prr.core
+
+		NETWORK. 			Rede de terminais, 
+		NETWORKMANAGER 	representa o ponto de entrada inicial do menu principal; tem dois comandos que precisam dele para funcionar.
+			o network manager o network pelo qual a app esta a funcionar	
+		TERMINAL
+
+
+
+		
+
+
+							CAMADAS DE APLICACAO
+
+LÓGICA DE NEGÓCIO
+
+	Contém as operações básicas necessárias ao funcionamento da aplicação
+
+	No projeto está designada como secção core.
+	
+	Contem uma unica classe chamada IntegerManager que guarda um inteiro.
+
+
+SERVIÇOS
+
+	Todos os comandos que queremos que o user possa usar na app
+
+	Cada serviço é uma funcionalidade disponibilizada ao user
+
+	Denominada app no nosso projeto.
+
+	Possui as entidades do dominio
+
+
+APRESENTAÇÃO
+
+	Camada responsável por fazer a interação com o user. 
+
+	Concretização da interface.
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+

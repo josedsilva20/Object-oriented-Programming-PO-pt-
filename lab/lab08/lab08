@@ -1,0 +1,70 @@
+public boolean equals(Object object){
+	return obj instanceof Stormtropper s && _name.equals(s._name);
+
+	ou entao podiamos escrever:
+
+	return obj instanceof Stormtropper && _name.equals((Stormtropper) obj)._name;
+}
+
+public int hashCode(){
+	return _name.hashCode();
+}
+
+este era o pedaço de codigo da outra semana que faltava para o codigo estar perfeito.
+
+_---------------------------------------------------------------------------------------
+
+LAB08
+
+EX1
+
+	A)	public static void cat(File file) throws FileNotFoundException, IOException {.....}
+
+	B)	.....
+		catch(FileNotFoundException | IOException e){.....}
+		finally {
+			try{
+				...  close();
+			}
+			catch(IOExceptio ioe){...}
+		}
+
+		ou entao podiamos fazer um try with resources.
+
+		try(RandomAccessFile input = new RandomAccessFile(file, "r")){
+			.... todo o resto fica o mesmo como em cima tirando o finally.
+		}
+
+		Sempre que usarmos operações de entrada e saída usamos o try with resources porque este faz o close() por nós.
+
+
+
+EX2
+
+	sempre que quisermos adicionar uma forma ao editor e a forma nao seja valida entao lançamos uma excepçao. o super da classe exception ja guarda uma msg predefinida.
+
+
+	public class Editor{
+    Map<Integer,Form> _forms;
+
+    public Form getForm(int id) throws NoSuchIdentifierException {
+        if (_forms.containsKey(id))
+            return _forms.get(id);
+        throw new NoSuchIdentifierException(id);
+    }
+	}
+
+	public class NosuchIdentifierException extends Exception {
+    private int _identifier;
+
+    public NosuchIdentifierException(int id){
+        super("Identificar não existente " + id);
+        _identifier = id;
+    }
+
+    public int getIdentifier(){
+        return _identifier;  // ajuda a guardar qual é o id que deu erro para posteriormente usalo para resolver o problema.
+    }
+}
+
+

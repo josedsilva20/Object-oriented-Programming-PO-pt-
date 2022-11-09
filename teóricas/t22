@@ -1,0 +1,220 @@
+FACTORY METHOD (CREATINAL)
+
+	OBJETIVO
+
+		Definir interface para criar obj mas a decisao do tipo a ser instanciado é deixado nas classes derivadas.
+
+		A referencia para os obj criados é comum (neste caso a classe pizza)
+
+		Deve ser usado quando uma classe nao consegue antecipar qual a instancia que vai utilizar
+
+
+
+	CONSEQUENCIAS
+
+		mais flexivel que criar objetos no criador (varios ifs ou switch)
+
+		obedece ao principio do aberto fechado
+
+
+	____________________________
+			Pizza 
+	____________________________
+
+	____________________________
+	cut()
+	prepare()
+	bake()
+	box()
+	____________________________
+
+	Imaginando que temos uma loja de pizzas e que vamos começar a modelar o problema.
+
+	public class PizzaStore{
+		public Pizza order(){
+			Pizza p = new Pizza();
+			p.prepare();
+			p.bake();
+			p.cut();
+			p.box();
+			return p;
+		}
+	}
+
+	Sendo que a loja expande e abrimos varias lojas. Pizza Lisboa(loja), Pizza Porto...
+
+	Entao criamos as classes que herdam de PizzaStore: pizzaLisboa e PizzaPorto
+
+
+	public class PizzaLx{
+		order(){
+			Pizza p = new PizzaLx();
+			-----
+			---
+		}
+	}
+
+	public class PizzaPorto{
+		order(){
+			Pizza p = new PizzaPorto();
+			-----
+			---
+		}
+	}
+
+	Isto faz com que haja muito codigo repetido. se houvesse mais lojas em outros sitios ia acontecer o mesmo 
+
+
+
+	Para refactorizar o codigo:
+
+		FAzemos denv a PizzaStore:
+
+			public abstract class PizzaStore{
+
+				public abstract Pizza createPizza();
+
+				public Pizza order(){
+					Pizza p = createPizza();
+					p.prepare();
+					p.bake();
+					p.cut();
+					p.box();
+					return p;
+				}
+			}
+
+			public  class PizzaLx extends PizzaStore{
+
+				public abstract Pizza createPizza(){
+					return new PizzaLx();
+				}
+			}
+
+------------------------------------------------------------------------------------------------
+
+
+STRATEGY (HEHAVIORAL)
+
+	OBJETIVO
+
+		Definir uma familia de algoritmos (diversas formas de pagamentos)
+
+		Definir uma abstração tornando a troca da escolha de algoritmo facil. Quem escolhe o algoritmo a usar é o cliente
+
+	Consequencias
+
+		Elimina a possibilidade de switches
+
+		Define a familia de algoritmos permitindo a factorizacao de codigo.
+
+		Permite de forma dinamica mudar a estrategia usada pelo cliente.
+
+		Separa a estratégia e o codigo do cliente. O cliente nao sabe como as coisas sao feitas
+
+	DESVANTAGENS
+
+		Os clientes têm que saber quais sao os algoritmos a usar em cada tipo de contexto
+
+			isso faz com que ele saiba todos os algoritmos que existem no programa.
+
+		Sobrecarga de comunicacao entreo o Strategy e o Contexto.
+
+		Contexto conhece estrategia mas estrategia nao conhece contexto. GRANDE PROBLEMA.
+
+	Shopping cart {
+
+		void pay(PaymentType p){
+			switch (p){
+				case PaymentType.VISA:
+					---
+
+				case PaymentType.PAYPAL:
+					---
+
+				-----
+				-----
+			}
+		}
+	}
+
+
+	Esta abordagem nao obedece ao aberto/fechado. Imaginemos que precisamos suportar um novo tipo de pagamento. Teremos que modificar o codigo
+
+	precisamos alterar o codigo para ser flexivel. Separar as coisa: modificar tipo de pagamento nao ter impacto no peso dessa classe cart.
+
+	Para melhorar isso: 
+
+		Precisamos definir(abstrair) o funcionamento de pagar:
+
+			public class PaymentType{
+				pay()
+			}
+
+			e vao haver as classes que derivam dela: visa, paypal, ... que vao implementar o merodo pay().
+
+	Assim a solução fica:
+
+		public class ShoppingCart{
+			paymentType _p;
+
+			void setPaymentType(p){
+				_p = p;
+			}
+
+			void pay(){
+				_.pay();
+			}
+		}
+------------------------------------------------------------------------------------
+
+
+
+addOptionField() ---> 
+
+	o Form é uma classe do pouilib que representa um form com varios campos.
+
+	Cada campo é preenchido com add... add.. .
+
+	Quando invocamos o metodo parse sobre o form, pede o user para preencher os varios campos:
+
+		cada campo que temos vai se fazer uma pergunta ao user:
+
+			para descobrirmos o que esta: stringField(), realField()
+
+			estes so podem ser invocados depois de invocarmos o parse()
+
+		existe um metodo execute() 
+
+		podemos adicionar campos ao formulario por omissao de cada comando.
+
+		antes de fazer o execute precisamos fazer o parse()
+
+		FANCY E BASIC
+
+			voltar a perguntar nao usamos _forms.parse()
+
+			fazemos:
+
+				criar novo form, adicionar um campo para perguntar o tipo de terminal, ver o que tem preenchido, se for BASIC OU FANCY ....
+
+				para solucionar:
+
+					o optionField("id", "str a escrever ao user", FANCY, BASIC)
+
+						onde Fancy e basic sao as varias strs que ele aceita.
+
+						para ir buscar um valor usamos o stringField. garante-se que o valor devolvido será ou basic ou fancy. se a resposta do user nao for um desses, a pergunta volta a ser feita
+
+						em vez de por um stringField(), fazemos um optionField() e dizer quais sao as opcoes.
+
+						como declarar um metodo com um numero variavel de args:
+
+							public void abc(int a, int b, Type ... obj)
+
+								onde type é o tipo (str, int...) e obj é o name. e ... é que significa variavel 
+
+								e o obj dentro dessa funcao representa-se por:
+
+									Type[] obj;
+

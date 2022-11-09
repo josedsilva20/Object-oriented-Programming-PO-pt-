@@ -1,0 +1,110 @@
+CORRECAO TESTE
+
+public class Sala {
+    private int _nPessoas;
+    private Pessoa[] _pessoas;
+
+    public Sala (int n){
+        _pessoas = new Pessoa[n];
+    }
+
+    public Sala maisOcupada(Sala s){
+        return _nPessoas >= s._nPessoas ?this : s;
+    }
+
+
+    /* forma facil */
+    public Pessoa removeUltima(){
+        if (_nPessoas > 0)
+            return _pessoas[--_nPessoas];
+        else
+            return null;
+    }
+
+    
+}
+
+
+EX2
+
+
+
+_____________________________________
+	<<abstract>>
+		Forma
+_____________________________________
+
+- _id: int
+- _origem: Ponto
+_____________________________________
++ Forma()
++ mover(int, int)
++ <<abstract>> desenhar(): string
+
+_____________________________________
+		|*
+		|
+		|
+		|
+		|0..1
+_____________________________________
+
+	Editor
+_____________________________________
+- _nextID: int
+
+_____________________________________
++ adicionar(Forma)
++ desenha()
+
+_____________________________________
+
+As classes quadrado, linha e circulo descendem da classe Forma.
+
+
+public class Editor {
+    
+    private Forma[] _formas;
+    private int _nextID;
+
+    public Editor(int n){
+        _formas = new Forma[n];
+    }
+
+    public void desenha(){
+        for (int i = 0; i < _formas.length; i++)
+            if (_formas[i] != null)
+                System.out.println(_formas[i].desenha());
+    /* ou entao */
+
+    for (Forma f: _formas)
+        if (f != null)
+            System.out.println(f.desenha);
+    }
+
+    public boolean adicionar(Forma f){
+        for (int i = 0; i < _forms.length; i++){
+            if (_formas[i] == null){
+                _formas[i] = f;
+                f.setID(_nextID);
+                return true;
+            }
+            return false;
+        }
+    }
+}
+
+
+public class Quadrado extends Forma{
+    private int _lado;
+
+    public Quadrado(Point origem, int lado){
+        super(origem);
+        _lado = lado;
+    }
+
+    public String desenhar(){
+        return "Quadrado com origem " + _origem + " e lado " + _lado;
+    }
+}
+

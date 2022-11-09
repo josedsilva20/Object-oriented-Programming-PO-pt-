@@ -1,0 +1,96 @@
+EX 1
+
+	como o objetivo é garantir que apenas há uma unica instancia dessa classe usamos o singleton.
+
+	_____________________________
+			Singleton
+	_____________________________
+	- _singleton: Singleton(static)
+	_____________________________
+	- Singleton()
+	+ getSingleton(): Singleton
+	_____________________________
+
+	public class DatabaseConnection{
+		public static DatabaseConnection _database;
+
+		private DatabaseConnection(){
+			------
+		}
+
+		public static DatabaseConnection getConnection(){
+			if(_dbConnection == null)
+				_dbConnection = new DatabaseConnection();
+			return _dbConnection;
+		}
+	}
+
+EX2:
+
+	Usar o composite.
+
+	_____________________________
+			Component 
+			<<abstract>>
+	_____________________________
+	_____________________________
+	method()
+	_____________________________
+
+	_____________________________
+			ConcreteComponentA 
+	_____________________________
+	_____________________________
+	method()
+	_____________________________
+
+	_____________________________
+			Composite 
+	_____________________________
+	- _components[]: Component
+	_____________________________
+	method()
+	add()
+	remove()
+	_____________________________
+
+	sendo que ComponentA e Composite herdam de Component e um client tem component
+
+
+	public class Team extends Employe{
+		private List<Employee> _members;
+
+		public Team (String n){
+			super(n);
+			_members = new ArrayList<>();
+		}
+
+		public void add(Employee e){
+			_members.add(e);
+		}
+
+		public boolean remove(Employee e){
+			return _members.remove(e);
+		}
+
+		public void doWork(){
+			for (Employee e)
+				e.doWork();
+		}
+
+		public int getCost(){
+			int cost = 0;
+			for (Employee e: _members)
+				cost += e.getCost();
+			return cost*1.1;
+		}
+
+
+	}
+
+
+EX3:
+
+	Vamos usar o padrão Decorator
+
+ESTUDAR COMPOSITE FACTORYMETHOD STRATEGY TEMPLATEMETHOD E DECORATOR

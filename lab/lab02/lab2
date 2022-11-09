@@ -1,0 +1,197 @@
+EX 1:
+
+
+	_____________________________________________________________
+					Pneu
+	_____________________________________________________________
+
+		-	_pressao: int
+		-	_pressaoRecomendada:int {final}
+		-	_furado_ boolean
+
+	_____________________________________________________________
+
+		+	pneu(pressão:int, recomendada: int)
+		+	obtemPressao(): int
+		+ 	obtemPressaoRecomendada(): int
+		+ 	estaVazio(): boolean
+		+	alteraPressao(pressão: int): void
+		+	estaFurado(): boolean
+	_____________________________________________________________
+
+
+-----------------------------------------------------------------------------
+
+
+EX 2:
+
+	_____________________________________________________________
+					
+					Carro
+	_____________________________________________________________
+
+		-	_quilometragem: int
+		-	_marca: string {final}
+		-	_velocidadeMaxima: int
+		-	_pneus: Pneu[4]
+		-	_estaTravado: boolean
+		- 	_velocidade: int
+
+	_____________________________________________________________
+
+		+	Carro(marca: String, maxima: int, pneus: Pneu[])
+		+	travar(): void
+		+	destravar(): void
+		+	temPneuVazio(): boolean
+		+	obtemQuilometragem(): int
+		+	obtemMarca(): string
+		+	alteraQuilometragem(quilometragem: int)j: void
+		+	alteraVelocidade(velocidade: int): void
+	_____________________________________________________________
+
+
+
+public class Carro {
+	private 	final	String 		_marca;
+	private 	int 		_velocidadeMaxima;
+	private 	int 		_velocidade;
+	private 	boolean 	_travado;
+	private 	int 		_quilometragem;
+	private 	Pneu[] 	_pneus;
+
+	
+	public Carro (String m, int max, Pneu[] pneus) {
+		
+		_marca = m;
+		_velocidadeMax = max;
+		_pneus = pneus;
+		_travado = true;
+	}
+
+
+	public int obtemQuilometragem (){
+
+		return _quilometragem;
+
+	}
+
+
+	public String obtemMarca (){
+
+		return _marca;
+
+	}
+
+	
+	public TemPneuVazio() {
+		
+		for (i = 0; i < _pneus.length; i++)
+			if (_pneu[i].estaVazio())
+				return true;
+		
+		return false;
+	}
+
+	
+
+	#podiamos usar o for(Pneu p: _pneus)	if (p.estaVazio())	return true;	return false;
+
+	public void travar(){
+	
+		_velocidade = 0;
+		_travado = true;	
+
+	}
+	
+	
+	public travar() {
+		
+		_travado = false;
+
+	}
+
+	public void alteraQuilometragem(int q){
+		_quilometragem = q;
+	}
+	
+	public void alteraVelocidade(int v){
+		if (!_travado) {
+			if (v <= velocidadeMaxima)
+				_velocidade = v;
+			
+			else
+				_velocidade = _velocidadeMaxima;
+		}	
+	}
+	
+	#podiamos fazer: _velocidade = (v <= _velocidadeMaxima) ?v : _velocidadeMaxima;
+
+	#(condicao)? expressao1 :expressao2.  se for True faz expressao 1 e false expressao2
+
+}
+
+-----------------------------------------------------------------------------
+
+
+
+EX3:
+
+
+	_____________________________________________________________
+					Caneta
+	_____________________________________________________________
+
+		- _capacidade: int
+		- _marca: string
+		- _cor: String
+		- _quantidadeTinta: int
+	_____________________________________________________________
+
+		+ Caneta (capacidade:int, marca: str, cor: str)
+		+ escrever(mensagem: str): void
+		+ recarregar(quantidade: int): void
+		+ obterCor(): str
+		+ obterQuantidadeTinta(): void
+		+ estaVazia(): boolean
+		+ estaCheia(): boolean
+	_____________________________________________________________
+
+
+
+public class Caneta {
+
+   private int _capacidade;
+   private int _quantidadeTinta;
+   private final String _marca; 
+   private final String _cor;
+
+
+   public Caneta(int capacidade, String marca, String cor){
+
+   }
+
+   public int recarregar(int quantidade){
+    if (!estaCheia()){
+        if (_quantidadeTinta + quantidade <= _capacidade){
+            _quantidadeTinta += quantidade;
+            return 0;
+        }
+        
+        else {
+            int resto = _quantidadeTinta + quantidade - _capacidade;
+            _quantidadeTinta = _capacidade;
+            return resto;
+        }
+    }
+    return quantidade;
+   }
+
+   public void escrever(String msg){
+    if (_quantidade > 0) {
+        System.out.println(msg);
+        _quantidadeTinta -= (_quantidadeTinta >= msg.length()) ? msg.length() : _quantidadeTinta;
+    }
+   }
+   
+}
+

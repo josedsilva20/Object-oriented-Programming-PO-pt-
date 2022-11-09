@@ -1,0 +1,114 @@
+map
+
+	if(q>1000)
+		throw new Cannot
+
+	try{
+		first.withdraw(q)
+	}
+	catch(----){
+		throw new ----;
+	}
+	second.add(q);
+
+
+	public CannotTransferException(int q){
+		super(q > 0 ? "uma mensagem" : "outra mensagem");
+	}
+
+EX4:
+
+	ja existe um metodo shuffle() na classe Collection. O problema é que recebe uma lista. Um array de cartas nao é uma lista.
+
+	existe uma classe Arrays e nela podemos fazer uma coisa:
+
+		List<T> = Arrays.asList()
+
+	Assim:
+
+	public void baralhar(){
+		Collections.shuffle(Arrays.asList(_cartas));
+	}
+
+	b)
+
+		qualquer metodo declarado na interface é sempre public
+		public interface IteradorBaralho<T>{
+			T proximaCarta();
+			boolean haProxima();
+		}
+
+	c)
+		coisas que tem que estar no cartas.java
+		public int tamanho(){---}
+		public Carta obtemCarta(int idx){----};
+
+
+
+		public class IteradorVersao1 implements IteradorBaralho<Carta>{
+			private int _cursor;
+			private Baralho _baralho;
+
+			//precisamos por public apesar dele ja ser
+			public boolean haProxima(){
+				return _cursor < _baralho.tamanho();
+			}
+
+			public Carta proximaCarta(){
+				return _baralho.obtemCarta(_cursor++);
+			}
+
+			public IteradorVersao1(Baralho b){
+				_baralho = b;
+			}
+		}
+
+	d)
+
+		temos de fazer um iterador que acede a classe externa do iterador do baralho:
+
+		public class Baralho{
+			.... metodos que ja la estavam menos os dois que queremos implementar.
+
+			private class IteradorVersao2 implements IteradorBAralho{
+				//cada iaterador vai estarligado a um unico baralho
+				//temos acesso a todos os metodos da classe exterior(baralho)
+
+				private int _cursor;
+				public boolean haProxima(){
+					return _cursor < _cartas.length; //podemos aceder direto ao atributo cartas!
+				}
+
+				public Carta proximaCarta(){
+					return _cartas[_cursor++];
+				}
+			}
+
+			//precisamos criar um iterador para iterar que só pode ser instanciado na classe exterior. nao podemos dizer que o tipo de retorno é Iteradorversao2 porque se usarmos fora da classe baralho ele nao vai funcionar.
+
+			public IteradorBaralho criaIterador(){
+				return new IteradorVersao2();
+			}
+
+			//quando temos classes que sao usadas apenas num unico sitio usamos classes anonimas
+			//ha uma alternativa a esse codigo com isso.
+
+			public IteradorBaralho criaIterador(){
+				return new IteradorBaralho(){
+
+					private int _cursor;
+					public boolean haProxima(){
+						return _cursor < _cartas.length; 
+					}
+
+					public Carta proximaCarta(){
+						return _cartas[_cursor++];
+					}
+			}
+				}
+			}
+
+		}
+
+
+
