@@ -23,9 +23,14 @@ public abstract class Communication implements Serializable{
 		_status = "FINISHED";
 	}
 
+	public void setStatus(String status) {
+		_status = status;
+	}
+	
 	public Communication(){
 
 	}
+
 
 	public String getType(){
 		return _type;
@@ -45,14 +50,16 @@ public abstract class Communication implements Serializable{
 
 	//public String toString(){}
 
-
+	public boolean isInteractive(){
+		return this instanceof VideoCommunication v || this instanceof VoiceCommunication c;
+	}
 
 	public int getId(){
 		return _id++;
 	}
 
 	public boolean equals(Communication c1){
-		return (_id == c1.getId());
+		return _id == c1.getId();
 	}
 
 	public String toString(){
@@ -60,6 +67,9 @@ public abstract class Communication implements Serializable{
 		return _type + "|" + _id + "|" + _from.getId() + "|" + _to.getId() + "|" + "units" + "|" + _cost + "|" + _status;
 	}
 	
+	public void setCost(double cost) {
+		_cost = cost;
+	}
 
 	protected abstract double computeCost(String plan);
 
