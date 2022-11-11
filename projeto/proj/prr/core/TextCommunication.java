@@ -8,6 +8,10 @@ public class TextCommunication extends Communication{
 		_message = message;
 	}
 
+	public boolean equals(TextCommunication other) {
+		return this.getId() == other.getId();
+	}
+
 	//all methods above are going to be overriden.
 	protected double computeCost(String plan){
 		double price = 10;
@@ -31,6 +35,7 @@ public class TextCommunication extends Communication{
 			else 
 				price = 0;
 		}
+		setCost(Math.round(price));
 		return price;
 	}
 

@@ -16,6 +16,8 @@ public class Client implements Serializable{
 	private boolean _receiveNotifications;
 	private List<Terminal> _terminals;
 	private TariffPlan _tariffPlan;
+	private int _numberOfVideoCommunications;
+	private boolean _differentFromVideo = false;
 
 
 	public Client(String key, String name, int taxId){
@@ -30,6 +32,11 @@ public class Client implements Serializable{
 	public Client(){
 
 	}
+
+	public void setDebt(double debt){
+		_debts += debt;
+	}
+
 
 	@Override
 	public String toString(){
@@ -107,7 +114,30 @@ public class Client implements Serializable{
 		_receiveNotifications = false;
 	}
 
+	public void iterateVideoCount(){
+		if (_numberOfVideoCommunications < 5)
+			_numberOfVideoCommunications++;
+		else
+			_numberOfVideoCommunications = 1;
+			_differentFromVideo = true;
+	}
+
 	public boolean isReceiverActive(){
 		return _receiveNotifications;
+	}
+	public void updateLevel(){
+		if (getClientLevel().equals("NORMAL"))
+			if((_payments - _debts) > 500)
+				_level = "GOLD";
+		if (getClientLevel().equals("GOLD")){
+			if((_payments - _debts) < 0)
+				_level = "NORMAL";
+			if (((_payments - _debts) > 0) && !_differentFromVideo)
+				_level = "PLATINUM";
+		}
+		if (getClientLevel().equals("NORMAL")){
+			if((_payments - _debts) > 500)
+				_level = "GOLD";
+		}
 	}
 }

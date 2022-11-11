@@ -3,9 +3,12 @@ package prr.core;
 public class VideoCommunication extends Communication{
 	private int _duration;
 
-	public VideoCommunication(int id, Terminal from, Terminal to, int duration){
+	public VideoCommunication(int id, Terminal from, Terminal to){
 		super(id, from, to, "VIDEO");
-		_duration = duration;
+	}
+
+	public boolean equals(VideoCommunication c1){
+		return this.getId() == c1.getId();
 	}
 
 	protected double computeCost(String plan){
@@ -16,7 +19,16 @@ public class VideoCommunication extends Communication{
 		if (plan.equals("GOLD"))
 			price = 20;
 
+		setCost(Math.round(price));
 		return price;
+	}
+
+	public void setDuration(int duration){
+		_duration = duration;
+	}
+
+	public int getDuration(){
+		return _duration;
 	}
 
 	protected int getSize(){

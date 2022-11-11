@@ -6,6 +6,7 @@ import prr.core.exception.ExistingTermKeyException;
 import prr.core.exception.InvalidFriendException;
 import prr.core.exception.InvalidIdException;
 import prr.core.Network;
+import prr.core.exception.TerminalIsOffException;
 
 import prr.core.exception.SendNotificationException;
 
@@ -60,6 +61,11 @@ public class Terminal implements Serializable, Observer/* FIXME maybe addd more 
     return Math.round(_payments);
   }
 
+  public void addDebt(double value){
+    _debts += value;
+    _owner.setDebt(value);
+  }
+
   public long getDebts(){
     return Math.round(_debts);
   }
@@ -93,6 +99,30 @@ public class Terminal implements Serializable, Observer/* FIXME maybe addd more 
     return orderedFriends;
   }
 
+  public void addMadeCommunication(VideoCommunication v){
+    _madeCommunications.add(v);
+  }
+
+  public void addMadeCommunication(VoiceCommunication v){
+    _madeCommunications.add(v);
+  }
+
+  public void addMadeCommunication(TextCommunication v){
+    _madeCommunications.add(v);
+  }
+
+  public void addReceivedCommunication(TextCommunication v){
+    _receivedCommunications.add(v);
+  }
+
+  public void addReceivedCommunication(VoiceCommunication v){
+    _receivedCommunications.add(v);
+  }
+
+  public void addReceivedCommunication(VideoCommunication v){
+    _receivedCommunications.add(v);
+  }
+
   public String getId(){
     return _id;
   }
@@ -101,6 +131,13 @@ public class Terminal implements Serializable, Observer/* FIXME maybe addd more 
     return _madeCommunications.size();
   }
 
+  public int getReceivedCommunications(){
+    return _receivedCommunications.size();
+  }
+
+  public String getType() {
+    return _type;
+  }
 
   public String toString() {
     String out = "";
@@ -143,7 +180,6 @@ public class Terminal implements Serializable, Observer/* FIXME maybe addd more 
    * @return true if this terminal is neither off neither busy, false otherwise.
    **/
   public boolean canStartCommunication() {
-    // FIXME add implementation code
     return true;
   }
   public void setSilence()throws SendNotificationException{
@@ -237,10 +273,12 @@ public class Terminal implements Serializable, Observer/* FIXME maybe addd more 
       throw new SendNotificationException();
     }
 
+
+    //corrigir _madeCommunications para id que vem do network.
     public Communication sendTextCommunication(Terminal to, String msg) throws SendNotificationException {
       if (to.isOff())
         throw new SendNotificationException();
-      long price;
+      long price = 0;
       TextCommunication t = new TextCommunication(_madeCommunications.size(), this, to, msg);
       if(!isOff() && !isBusy()){
         if (_friends.contains(to))
@@ -248,7 +286,9 @@ public class Terminal implements Serializable, Observer/* FIXME maybe addd more 
         else  
           price = Math.round(t.computeCost(_owner.getClientLevel()));
       }
+      addDebt(price);
       return t;
     }
-
+    
+    
 }

@@ -9,8 +9,12 @@ import java.io.Serializable;
 import prr.core.exception.ExistingTermKeyException;
 import prr.core.exception.DuplTerminalKeyException;
 import prr.core.exception.ClientNotificationException;
-// FIXME add more import if needed (cannot import from pt.tecnico or prr.app)
+import prr.core.exception.TerminalIsOffException;
+import prr.core.exception.TerminalIsBusyException;
+import prr.core.exception.UnsopportedFromComException;
+import prr.core.exception.UnsopportedComToException;
 import prr.core.exception.SendNotificationException;
+import prr.core.exception.DestinatioOffException;
 
 /**
  * Class Store implements a store.
@@ -267,6 +271,57 @@ public class Network implements Serializable {
     return lst;
   }
 
+  public void startInteractiveCommunication(String type,String from, String to)throws SendNotificationException, InvalidIdException, //
+    TerminalIsBusyException, TerminalIsOffException, UnsopportedComToException, UnsopportedComToException, InvalidIdException,
+    DestinatioOffException{
+      
+      try{
+        Terminal fr = getTerminalById(from);
+        Terminal t = getTerminalById(to);
+      }
+      
+      catch(InvalidIdException iie){
+        throw iie;
+      }
+
+      if(getTerminalById(from).isBusy() || getTerminalById(from).isOff())
+        throw new SendNotificationException();
+
+      else if (getTerminalById(from).isOff())
+        throw new TerminalIsOffException();
+
+      else if(getTerminalById(to).isBusy())
+        throw new TerminalIsBusyException();
+      
+      else if(getTerminalById(to).isOff())
+        throw new DestinatioOffException();
+
+      else if(!(getTerminalById(to).getType().equals("FANCY")))
+        throw new UnsopportedComToException();
+      
+      if (type.equals("VOICE"))
+        startVoiceCall(getTerminalById(from), getTerminalById(to));
+      else
+        startVideoCall(getTerminalById(from), getTerminalById(to));
+    }
+
+  public void startVideoCall(Terminal from, Terminal to) {
+    VoiceCommunication v = new VoiceCommunication(_communications.size(), from, to);
+    v.setStatus("ONGOING");
+    from.addMadeCommunication(v);
+    to.addReceivedCommunication(v);
+    _communications.add(v);
+    from.getClient().iterateVideoCount();
+  }
+
+  public void startVoiceCall(Terminal from, Terminal to) {
+    VideoCommunication v = new VideoCommunication(_communications.size(), from, to);
+    v.setStatus("ONGOING");
+    from.addMadeCommunication(v);
+    to.addReceivedCommunication(v);
+    _communications.add(v);
+  }
+
 
   /**
    * Read text input file and create corresponding domain entities.
@@ -280,4 +335,6 @@ public class Network implements Serializable {
     Parser parse = new Parser(this);
     parse.parseFile(filename);
   }
+
+  
 }
