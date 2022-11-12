@@ -5,11 +5,9 @@ import prr.core.Terminal;
 import prr.app.exception.UnknownTerminalKeyException;
 import pt.tecnico.uilib.forms.Form;
 import pt.tecnico.uilib.menus.CommandException;
-import prr.core.exception.TerminalIsOffException;
 import prr.core.exception.TerminalIsBusyException;
 import prr.core.exception.UnsopportedFromComException;
 import prr.core.exception.UnsopportedComToException;
-import prr.core.exception.SendNotificationException;
 import prr.core.exception.InvalidIdException;
 import prr.core.exception.DestinatioOffException;
 
@@ -35,16 +33,9 @@ class DoStartInteractiveCommunication extends TerminalCommand {
     catch (InvalidIdException iie){
       throw new UnknownTerminalKeyException(to);
     }
-    catch(SendNotificationException sne){
-      _display.addLine(Message.originIsBusy(_receiver.getId()));
-    }
     catch (TerminalIsBusyException tibe){
       _display.addLine(Message.destinationIsBusy(to));
     }
-    catch (TerminalIsOffException tioe){
-      _display.addLine(Message.originIsOff(_receiver.getId()));
-    }
-
     catch (DestinatioOffException doe){
       _display.addLine(Message.destinationIsOff(to));
     }

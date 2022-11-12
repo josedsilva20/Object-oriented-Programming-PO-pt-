@@ -1,0 +1,132 @@
+*** testsBoth/A-14-04-M-ok.out	Sun Oct 30 22:57:54 2022
+--- testsBoth/A-14-04-M-ok.outhyp	Sat Nov 12 13:15:26 2022
+***************
+*** 29,34 ****
+--- 29,35 ----
+  Escolha uma opção: 9
+  Número do terminal: 969001
+  Tipo de comunicação a iniciar (VOICE, VIDEO): VOICE
++ O terminal '969001' não pode receber comunicações VOICE
+  OPERAÇÕES DO TERMINAL
+  1 - Ligar
+  2 - Colocar no silêncio
+***************
+*** 37,43 ****
+  5 - Retirar amigo
+  6 - Pagamento
+  7 - Consultar saldo
+! 10 - Terminar comunicação activa
+  11 - Mostrar comunicação em curso
+  0 - Sair
+  Escolha uma opção: 0
+--- 38,45 ----
+  5 - Retirar amigo
+  6 - Pagamento
+  7 - Consultar saldo
+! 8 - Enviar comunicação de texto
+! 9 - Iniciar comunicação
+  11 - Mostrar comunicação em curso
+  0 - Sair
+  Escolha uma opção: 0
+***************
+*** 47,57 ****
+  3 - Operações de terminal
+  0 - Sair
+  Escolha uma opção: 1
+! BASIC|969001|cli001|BUSY|0|0
+  BASIC|969003|cli001|OFF|0|0
+  BASIC|969006|cli002|IDLE|0|0
+  BASIC|969007|cli003|IDLE|0|0
+! BASIC|969008|cli003|BUSY|0|0
+  FANCY|969011|cli001|IDLE|0|0
+  FANCY|969013|cli001|SILENCE|0|0
+  FANCY|969014|cli002|IDLE|0|0
+--- 49,59 ----
+  3 - Operações de terminal
+  0 - Sair
+  Escolha uma opção: 1
+! BASIC|969001|cli001|IDLE|0|0
+  BASIC|969003|cli001|OFF|0|0
+  BASIC|969006|cli002|IDLE|0|0
+  BASIC|969007|cli003|IDLE|0|0
+! BASIC|969008|cli003|SILENCE|0|0
+  FANCY|969011|cli001|IDLE|0|0
+  FANCY|969013|cli001|SILENCE|0|0
+  FANCY|969014|cli002|IDLE|0|0
+***************
+*** 71,76 ****
+--- 73,80 ----
+  5 - Retirar amigo
+  6 - Pagamento
+  7 - Consultar saldo
++ 8 - Enviar comunicação de texto
++ 9 - Iniciar comunicação
+  11 - Mostrar comunicação em curso
+  0 - Sair
+  Escolha uma opção: 0
+***************
+*** 96,107 ****
+  5 - Retirar amigo
+  6 - Pagamento
+  7 - Consultar saldo
+! 10 - Terminar comunicação activa
+  11 - Mostrar comunicação em curso
+  0 - Sair
+  Escolha uma opção: 10
+! Duração da comunicação (em minutos): 1
+! Custo da comunicação: 20 unidades.
+  OPERAÇÕES DO TERMINAL
+  1 - Ligar
+  2 - Colocar no silêncio
+--- 100,111 ----
+  5 - Retirar amigo
+  6 - Pagamento
+  7 - Consultar saldo
+! 8 - Enviar comunicação de texto
+! 9 - Iniciar comunicação
+  11 - Mostrar comunicação em curso
+  0 - Sair
+  Escolha uma opção: 10
+! Opção inválida!
+  OPERAÇÕES DO TERMINAL
+  1 - Ligar
+  2 - Colocar no silêncio
+***************
+*** 114,119 ****
+--- 118,136 ----
+  9 - Iniciar comunicação
+  11 - Mostrar comunicação em curso
+  0 - Sair
++ Escolha uma opção: 1
++ OPERAÇÕES DO TERMINAL
++ 1 - Ligar
++ 2 - Colocar no silêncio
++ 3 - Desligar
++ 4 - Adicionar amigo
++ 5 - Retirar amigo
++ 6 - Pagamento
++ 7 - Consultar saldo
++ 8 - Enviar comunicação de texto
++ 9 - Iniciar comunicação
++ 11 - Mostrar comunicação em curso
++ 0 - Sair
+  Escolha uma opção: 11
+  Não existe nenhuma comunicação em curso.
+  OPERAÇÕES DO TERMINAL
+***************
+*** 139,145 ****
+  BASIC|969003|cli001|OFF|0|0
+  BASIC|969006|cli002|IDLE|0|0
+  BASIC|969007|cli003|IDLE|0|0
+! BASIC|969008|cli003|SILENCE|0|20
+  FANCY|969011|cli001|IDLE|0|0
+  FANCY|969013|cli001|SILENCE|0|0
+  FANCY|969014|cli002|IDLE|0|0
+--- 156,162 ----
+  BASIC|969003|cli001|OFF|0|0
+  BASIC|969006|cli002|IDLE|0|0
+  BASIC|969007|cli003|IDLE|0|0
+! BASIC|969008|cli003|IDLE|0|0
+  FANCY|969011|cli001|IDLE|0|0
+  FANCY|969013|cli001|SILENCE|0|0
+  FANCY|969014|cli002|IDLE|0|0

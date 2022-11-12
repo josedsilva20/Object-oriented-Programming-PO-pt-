@@ -271,39 +271,34 @@ public class Network implements Serializable {
     return lst;
   }
 
-  public void startInteractiveCommunication(String type,String from, String to)throws SendNotificationException, InvalidIdException, //
-    TerminalIsBusyException, TerminalIsOffException, UnsopportedComToException, UnsopportedComToException, InvalidIdException,
-    DestinatioOffException{
-      
-      try{
-        Terminal fr = getTerminalById(from);
-        Terminal t = getTerminalById(to);
-      }
-      
-      catch(InvalidIdException iie){
-        throw iie;
-      }
-
-      if(getTerminalById(from).isBusy() || getTerminalById(from).isOff())
-        throw new SendNotificationException();
-
-      else if (getTerminalById(from).isOff())
-        throw new TerminalIsOffException();
-
-      else if(getTerminalById(to).isBusy())
-        throw new TerminalIsBusyException();
-      
-      else if(getTerminalById(to).isOff())
-        throw new DestinatioOffException();
-
-      else if(!(getTerminalById(to).getType().equals("FANCY")))
-        throw new UnsopportedComToException();
-      
-      if (type.equals("VOICE"))
-        startVoiceCall(getTerminalById(from), getTerminalById(to));
-      else
-        startVideoCall(getTerminalById(from), getTerminalById(to));
+  public void startInteractiveCommunication(String type,String from, String to)throws InvalidIdException, //
+  TerminalIsBusyException, UnsopportedComToException, UnsopportedComToException, InvalidIdException,
+  DestinatioOffException{
+    
+    try{
+      Terminal fr = getTerminalById(from);
+      Terminal t = getTerminalById(to);
     }
+    
+    catch(InvalidIdException iie){
+      throw iie;
+    }
+
+    if(getTerminalById(to).isBusy())
+      throw new TerminalIsBusyException();
+    
+    else if(getTerminalById(to).isOff())
+      throw new DestinatioOffException();
+
+    else if(!(getTerminalById(to).getType().equals("FANCY")))
+      throw new UnsopportedComToException();
+    
+    if (type.equals("VOICE"))
+      startVoiceCall(getTerminalById(from), getTerminalById(to));
+    else
+      startVideoCall(getTerminalById(from), getTerminalById(to));
+  }
+
 
   public void startVideoCall(Terminal from, Terminal to) {
     VoiceCommunication v = new VoiceCommunication(_communications.size(), from, to);
@@ -322,6 +317,70 @@ public class Network implements Serializable {
     _communications.add(v);
   }
 
+  /*public Communication getCommunicationByIdAux(int id) {
+    VideoCommunication  aux = new VideoCommunication();
+    for (Communication t : _communications){
+      if (t.getId() == id)
+        return t;
+    }
+    return aux;
+  }
+
+  public Communication getCommunicationById(int id) throws InvalidIdException{
+    if (getCommunicationByIdAux(id).getId() == 0)
+      throw new InvalidIdException();
+    return getCommunicationByIdAux(id);
+  }*/
+
+  public boolean hasOngoing(Terminal t){
+    for (Communication c : _communications){
+      if (c.getTerminalFrom().equals(t) && c.isOngoing())
+        return true;
+    }
+    return false;
+  }
+
+  public String getOngoingCommunication(Terminal t) throws InvalidIdException 
+  {
+    if (!hasOngoing(t))
+      throw new InvalidIdException();
+    String aux = "";
+    for (Communication c : _communications){
+      if (c.getTerminalFrom().equals(t) && c.isOngoing()){
+        aux += c.toString();
+        break;
+      }
+    }
+    return aux;
+  }
+  public int getOngoingCommunicationId(Terminal t)
+  {
+    int aux = 0;
+    for (Communication c : _communications){
+      if (c.getTerminalFrom().equals(t) && c.isOngoing()){
+        aux = c.getId();
+        break;
+      }
+    }
+    return aux;
+  }
+
+  public long endOngoingCommunication(int id, int duration) //throws InvalidIdException 
+  {
+    boolean aux = false;
+    long cost = 0;
+    for (Communication c : _communications){
+      if ((c.getId() == id) && c.isOngoing()){
+        aux = true;
+        c.setDuration(duration);
+        cost = Math.round(c.computeCost(c.getTerminalFrom().getClient().getClientLevel()));
+      }  
+    }
+    //if (!aux)
+      //throw new InvalidIdException();
+    return cost;
+  }
+
 
   /**
    * Read text input file and create corresponding domain entities.
@@ -331,7 +390,6 @@ public class Network implements Serializable {
    * @throws IOException if there is an IO erro while processing the text file
    */
   void importFile(String filename) throws UnrecognizedEntryException, IOException /* FIXME maybe other exceptions */  {
-    //FIXME implement method
     Parser parse = new Parser(this);
     parse.parseFile(filename);
   }

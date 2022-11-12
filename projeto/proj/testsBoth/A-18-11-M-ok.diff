@@ -1,0 +1,40 @@
+*** testsBoth/A-18-11-M-ok.out	Sun Oct 30 22:57:57 2022
+--- testsBoth/A-18-11-M-ok.outhyp	Sat Nov 12 13:15:35 2022
+***************
+*** 69,76 ****
+  5 - Retirar amigo
+  6 - Pagamento
+  7 - Consultar saldo
+- 8 - Enviar comunicação de texto
+- 9 - Iniciar comunicação
+  11 - Mostrar comunicação em curso
+  0 - Sair
+  Escolha uma opção: 0
+--- 69,74 ----
+***************
+*** 99,105 ****
+  0 - Sair
+  Escolha uma opção: 1
+  Identificador do cliente: cli001
+! CLIENT|cli001|Manuel Pinheiro|103443|NORMAL|YES|4|0|0
+  GESTÃO DE CLIENTES
+  1 - Visualizar cliente
+  2 - Visualizar todos os clientes
+--- 97,103 ----
+  0 - Sair
+  Escolha uma opção: 1
+  Identificador do cliente: cli001
+! CLIENT|cli001|Manuel Pinheiro|103443|NORMAL|YES|2|0|0
+  GESTÃO DE CLIENTES
+  1 - Visualizar cliente
+  2 - Visualizar todos os clientes
+***************
+*** 111,117 ****
+  Escolha uma opção: 1
+  Identificador do cliente: cli003
+  CLIENT|cli003|Pedro Oliveira|103449|NORMAL|YES|3|0|0
+- O2S|969003
+  GESTÃO DE CLIENTES
+  1 - Visualizar cliente
+  2 - Visualizar todos os clientes
+--- 109,114 ----

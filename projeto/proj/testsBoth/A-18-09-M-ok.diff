@@ -1,0 +1,88 @@
+*** testsBoth/A-18-09-M-ok.out	Sun Oct 30 22:57:56 2022
+--- testsBoth/A-18-09-M-ok.outhyp	Sat Nov 12 13:15:34 2022
+***************
+*** 29,35 ****
+  Escolha uma opção: 9
+  Número do terminal: 969008
+  Tipo de comunicação a iniciar (VOICE, VIDEO): VOICE
+! O terminal de destino ('969008') está em silêncio.
+  OPERAÇÕES DO TERMINAL
+  1 - Ligar
+  2 - Colocar no silêncio
+--- 29,35 ----
+  Escolha uma opção: 9
+  Número do terminal: 969008
+  Tipo de comunicação a iniciar (VOICE, VIDEO): VOICE
+! O terminal '969008' não pode receber comunicações VOICE
+  OPERAÇÕES DO TERMINAL
+  1 - Ligar
+  2 - Colocar no silêncio
+***************
+*** 68,74 ****
+  0 - Sair
+  Escolha uma opção: 1
+  Identificador do cliente: cli001
+! CLIENT|cli001|Manuel Pinheiro|103443|NORMAL|YES|4|0|0
+  GESTÃO DE CLIENTES
+  1 - Visualizar cliente
+  2 - Visualizar todos os clientes
+--- 68,74 ----
+  0 - Sair
+  Escolha uma opção: 1
+  Identificador do cliente: cli001
+! CLIENT|cli001|Manuel Pinheiro|103443|NORMAL|YES|3|0|0
+  GESTÃO DE CLIENTES
+  1 - Visualizar cliente
+  2 - Visualizar todos os clientes
+***************
+*** 144,150 ****
+  6 - Mostrar saldo de cliente
+  0 - Sair
+  Escolha uma opção: 2
+! CLIENT|cli001|Manuel Pinheiro|103443|NORMAL|YES|4|0|0
+  CLIENT|cli002|Pedro Pinheiro|103447|NORMAL|YES|2|0|0
+  CLIENT|cli003|Pedro Oliveira|103449|NORMAL|YES|3|0|0
+  CLIENT|cli201|Ludgero Oliveira|103440|NORMAL|YES|0|0|0
+--- 144,150 ----
+  6 - Mostrar saldo de cliente
+  0 - Sair
+  Escolha uma opção: 2
+! CLIENT|cli001|Manuel Pinheiro|103443|NORMAL|YES|3|0|0
+  CLIENT|cli002|Pedro Pinheiro|103447|NORMAL|YES|2|0|0
+  CLIENT|cli003|Pedro Oliveira|103449|NORMAL|YES|3|0|0
+  CLIENT|cli201|Ludgero Oliveira|103440|NORMAL|YES|0|0|0
+***************
+*** 158,165 ****
+  0 - Sair
+  Escolha uma opção: 1
+  Identificador do cliente: cli001
+! CLIENT|cli001|Manuel Pinheiro|103443|NORMAL|YES|4|0|0
+! S2I|969008
+  GESTÃO DE CLIENTES
+  1 - Visualizar cliente
+  2 - Visualizar todos os clientes
+--- 158,164 ----
+  0 - Sair
+  Escolha uma opção: 1
+  Identificador do cliente: cli001
+! CLIENT|cli001|Manuel Pinheiro|103443|NORMAL|YES|3|0|0
+  GESTÃO DE CLIENTES
+  1 - Visualizar cliente
+  2 - Visualizar todos os clientes
+***************
+*** 170,176 ****
+  0 - Sair
+  Escolha uma opção: 1
+  Identificador do cliente: cli001
+! CLIENT|cli001|Manuel Pinheiro|103443|NORMAL|YES|4|0|0
+  GESTÃO DE CLIENTES
+  1 - Visualizar cliente
+  2 - Visualizar todos os clientes
+--- 169,175 ----
+  0 - Sair
+  Escolha uma opção: 1
+  Identificador do cliente: cli001
+! CLIENT|cli001|Manuel Pinheiro|103443|NORMAL|YES|3|0|0
+  GESTÃO DE CLIENTES
+  1 - Visualizar cliente
+  2 - Visualizar todos os clientes

@@ -1,0 +1,38 @@
+*** testsBoth/A-15-01-M-ok.out	Sun Oct 30 22:57:54 2022
+--- testsBoth/A-15-01-M-ok.outhyp	Sat Nov 12 13:15:27 2022
+***************
+*** 67,73 ****
+  7 - Mostrar terminais com saldo positivo
+  0 - Sair
+  Escolha uma opção: 1
+! TEXT|1|969001|969006|10|10|FINISHED
+  CONSULTAS
+  1 - Mostrar todas as comunicações
+  2 - Mostrar comunicações feitas por um cliente
+--- 67,73 ----
+  7 - Mostrar terminais com saldo positivo
+  0 - Sair
+  Escolha uma opção: 1
+! TEXT|0|969001|969006|units|16.0|FINISHED
+  CONSULTAS
+  1 - Mostrar todas as comunicações
+  2 - Mostrar comunicações feitas por um cliente
+***************
+*** 147,154 ****
+  7 - Mostrar terminais com saldo positivo
+  0 - Sair
+  Escolha uma opção: 1
+! TEXT|1|969001|969006|10|10|FINISHED
+! TEXT|2|969011|969001|49|10|FINISHED
+  CONSULTAS
+  1 - Mostrar todas as comunicações
+  2 - Mostrar comunicações feitas por um cliente
+--- 147,154 ----
+  7 - Mostrar terminais com saldo positivo
+  0 - Sair
+  Escolha uma opção: 1
+! TEXT|0|969001|969006|units|16.0|FINISHED
+! TEXT|0|969011|969001|units|16.0|FINISHED
+  CONSULTAS
+  1 - Mostrar todas as comunicações
+  2 - Mostrar comunicações feitas por um cliente

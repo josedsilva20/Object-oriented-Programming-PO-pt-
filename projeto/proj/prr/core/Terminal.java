@@ -180,8 +180,11 @@ public class Terminal implements Serializable, Observer/* FIXME maybe addd more 
    * @return true if this terminal is neither off neither busy, false otherwise.
    **/
   public boolean canStartCommunication() {
+    if (isBusy() || isOff())
+      return false;
     return true;
   }
+  
   public void setSilence()throws SendNotificationException{
     if (isBusy()){
       try {
@@ -290,5 +293,6 @@ public class Terminal implements Serializable, Observer/* FIXME maybe addd more 
       return t;
     }
     
+    //public List<Communication> getOngoingCommunications()
     
 }

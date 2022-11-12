@@ -26,11 +26,14 @@ public abstract class Communication implements Serializable{
 	public void setStatus(String status) {
 		_status = status;
 	}
-	
+
 	public Communication(){
 
 	}
 
+	public boolean isOngoing(){
+		return _status == "ONGOING";
+	}
 
 	public String getType(){
 		return _type;
@@ -69,6 +72,18 @@ public abstract class Communication implements Serializable{
 	
 	public void setCost(double cost) {
 		_cost = cost;
+	}
+
+	public Terminal getTerminalFrom() {
+		return _from;
+	}
+
+	public Terminal getTerminalTo(){
+		return _to;
+	}
+
+	public void setDuration(int duration) {
+		
 	}
 
 	protected abstract double computeCost(String plan);

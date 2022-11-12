@@ -1,0 +1,36 @@
+*** testsBoth/A-19-07-M-ok.out	Sun Oct 30 22:57:58 2022
+--- testsBoth/A-19-07-M-ok.outhyp	Sat Nov 12 13:15:37 2022
+***************
+*** 40,46 ****
+  11 - Mostrar comunicação em curso
+  0 - Sair
+  Escolha uma opção: 3
+! O terminal já estava desligado.
+  OPERAÇÕES DO TERMINAL
+  1 - Ligar
+  2 - Colocar no silêncio
+--- 40,46 ----
+  11 - Mostrar comunicação em curso
+  0 - Sair
+  Escolha uma opção: 3
+! O terminal já estava em silêncio.
+  OPERAÇÕES DO TERMINAL
+  1 - Ligar
+  2 - Colocar no silêncio
+***************
+*** 70,76 ****
+  11 - Mostrar comunicação em curso
+  0 - Sair
+  Escolha uma opção: 3
+! O terminal já estava desligado.
+  OPERAÇÕES DO TERMINAL
+  1 - Ligar
+  2 - Colocar no silêncio
+--- 70,76 ----
+  11 - Mostrar comunicação em curso
+  0 - Sair
+  Escolha uma opção: 3
+! O terminal já estava em silêncio.
+  OPERAÇÕES DO TERMINAL
+  1 - Ligar
+  2 - Colocar no silêncio

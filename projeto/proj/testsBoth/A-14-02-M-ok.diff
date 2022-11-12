@@ -1,0 +1,84 @@
+*** testsBoth/A-14-02-M-ok.out	Sun Oct 30 22:57:54 2022
+--- testsBoth/A-14-02-M-ok.outhyp	Sat Nov 12 13:15:26 2022
+***************
+*** 37,47 ****
+  5 - Retirar amigo
+  6 - Pagamento
+  7 - Consultar saldo
+! 10 - Terminar comunicação activa
+  11 - Mostrar comunicação em curso
+  0 - Sair
+  Escolha uma opção: 11
+! VOICE|1|969001|969011|0|0|ONGOING
+  OPERAÇÕES DO TERMINAL
+  1 - Ligar
+  2 - Colocar no silêncio
+--- 37,48 ----
+  5 - Retirar amigo
+  6 - Pagamento
+  7 - Consultar saldo
+! 8 - Enviar comunicação de texto
+! 9 - Iniciar comunicação
+  11 - Mostrar comunicação em curso
+  0 - Sair
+  Escolha uma opção: 11
+! VIDEO|0|969001|969011|units|0.0|ONGOING
+  OPERAÇÕES DO TERMINAL
+  1 - Ligar
+  2 - Colocar no silêncio
+***************
+*** 50,56 ****
+  5 - Retirar amigo
+  6 - Pagamento
+  7 - Consultar saldo
+! 10 - Terminar comunicação activa
+  11 - Mostrar comunicação em curso
+  0 - Sair
+  Escolha uma opção: 0
+--- 51,58 ----
+  5 - Retirar amigo
+  6 - Pagamento
+  7 - Consultar saldo
+! 8 - Enviar comunicação de texto
+! 9 - Iniciar comunicação
+  11 - Mostrar comunicação em curso
+  0 - Sair
+  Escolha uma opção: 0
+***************
+*** 60,71 ****
+  3 - Operações de terminal
+  0 - Sair
+  Escolha uma opção: 1
+! BASIC|969001|cli001|BUSY|0|0
+  BASIC|969003|cli001|OFF|0|0
+  BASIC|969006|cli002|IDLE|0|0
+  BASIC|969007|cli003|IDLE|0|0
+  BASIC|969008|cli003|SILENCE|0|0
+! FANCY|969011|cli001|BUSY|0|0
+  FANCY|969013|cli001|SILENCE|0|0
+  FANCY|969014|cli002|IDLE|0|0
+  FANCY|969015|cli003|IDLE|0|0
+--- 62,73 ----
+  3 - Operações de terminal
+  0 - Sair
+  Escolha uma opção: 1
+! BASIC|969001|cli001|IDLE|0|0
+  BASIC|969003|cli001|OFF|0|0
+  BASIC|969006|cli002|IDLE|0|0
+  BASIC|969007|cli003|IDLE|0|0
+  BASIC|969008|cli003|SILENCE|0|0
+! FANCY|969011|cli001|IDLE|0|0
+  FANCY|969013|cli001|SILENCE|0|0
+  FANCY|969014|cli002|IDLE|0|0
+  FANCY|969015|cli003|IDLE|0|0
+***************
+*** 84,89 ****
+--- 86,93 ----
+  5 - Retirar amigo
+  6 - Pagamento
+  7 - Consultar saldo
++ 8 - Enviar comunicação de texto
++ 9 - Iniciar comunicação
+  11 - Mostrar comunicação em curso
+  0 - Sair
+  Escolha uma opção: 0
