@@ -4,7 +4,7 @@ public class VoiceCommunication extends Communication{
 	private int _duration;
 
 	public VoiceCommunication(int id, Terminal from, Terminal to){
-		super(id, from, to, "VOICE");
+		super(id, from, to, "VOICE", 0);
 	}
 
 	public boolean equals(VoiceCommunication c1){

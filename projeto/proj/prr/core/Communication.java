@@ -8,6 +8,7 @@ public abstract class Communication implements Serializable{
 	private int _id;
 	private Terminal _from;
 	private Terminal _to;
+	private int _units;
 	double _cost;
 	boolean _isOngoing;
 	String _type;
@@ -15,12 +16,13 @@ public abstract class Communication implements Serializable{
 	String _status;
 
 	//id comes from position in array of Communications in Network.java
-	public Communication(int id, Terminal from, Terminal to, String type){
+	public Communication(int id, Terminal from, Terminal to, String type, int units){
 		_id = id;
 		_from = from;
 		_to = to;
 		_type = type;
 		_status = "FINISHED";
+		_units = units;
 	}
 
 	public void setStatus(String status) {
@@ -67,11 +69,14 @@ public abstract class Communication implements Serializable{
 
 	public String toString(){
 		//type|idCommunication|idSender|idReceiver|units|price|status
-		return _type + "|" + _id + "|" + _from.getId() + "|" + _to.getId() + "|" + "units" + "|" + _cost + "|" + _status;
+		return _type + "|" + _id + "|" + _from.getId() + "|" + _to.getId() + "|" + _units + "|" + (int) _cost + "|" + _status;
 	}
 	
 	public void setCost(double cost) {
 		_cost = cost;
+	}
+	public void setUnits(int unit) {
+		_units += unit;
 	}
 
 	public Terminal getTerminalFrom() {

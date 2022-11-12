@@ -15,6 +15,7 @@ import prr.core.exception.UnsopportedFromComException;
 import prr.core.exception.UnsopportedComToException;
 import prr.core.exception.SendNotificationException;
 import prr.core.exception.DestinatioOffException;
+import prr.core.exception.TerminalIsSilenteException;
 
 /**
  * Class Store implements a store.
@@ -29,6 +30,7 @@ public class Network implements Serializable {
   private List<Communication> _communications;
   private List<Terminal> _terminals;
   private Parser _parser;
+  private int _commsId;
 
 
   // FIXME define contructor(s)
@@ -36,6 +38,7 @@ public class Network implements Serializable {
       _clients = new ArrayList<>();
       _communications = new ArrayList<>();
       _terminals = new ArrayList<>();
+      _commsId = 0;
   }
 
   //________________________________________________________________
@@ -252,7 +255,7 @@ public class Network implements Serializable {
     Communication com;
     try {
       Terminal t = getTerminalById(to);
-      com = from.sendTextCommunication(t, msg);
+      com = from.sendTextCommunication(t, msg, _communications.size()+1);
     }
     catch(InvalidIdException iie){
       throw iie;
@@ -271,7 +274,7 @@ public class Network implements Serializable {
     return lst;
   }
 
-  public void startInteractiveCommunication(String type,String from, String to)throws InvalidIdException, //
+  public void startInteractiveCommunication(String type,String from, String to)throws InvalidIdException, TerminalIsSilenteException,//
   TerminalIsBusyException, UnsopportedComToException, UnsopportedComToException, InvalidIdException,
   DestinatioOffException{
     
@@ -290,18 +293,23 @@ public class Network implements Serializable {
     else if(getTerminalById(to).isOff())
       throw new DestinatioOffException();
 
-    else if(!(getTerminalById(to).getType().equals("FANCY")))
-      throw new UnsopportedComToException();
-    
+    else if(getTerminalById(to).isSilente())
+      throw new TerminalIsSilenteException();
+
     if (type.equals("VOICE"))
       startVoiceCall(getTerminalById(from), getTerminalById(to));
-    else
+    else{
+      if(!(getTerminalById(to).getType().equals("FANCY")))
+        throw new UnsopportedComToException();
       startVideoCall(getTerminalById(from), getTerminalById(to));
+    }
   }
 
 
-  public void startVideoCall(Terminal from, Terminal to) {
-    VoiceCommunication v = new VoiceCommunication(_communications.size(), from, to);
+  public void startVoiceCall(Terminal from, Terminal to) {
+    from.setBusy();
+    to.setBusy();
+    VoiceCommunication v = new VoiceCommunication(_communications.size()+1, from, to);
     v.setStatus("ONGOING");
     from.addMadeCommunication(v);
     to.addReceivedCommunication(v);
@@ -309,8 +317,10 @@ public class Network implements Serializable {
     from.getClient().iterateVideoCount();
   }
 
-  public void startVoiceCall(Terminal from, Terminal to) {
-    VideoCommunication v = new VideoCommunication(_communications.size(), from, to);
+  public void startVideoCall(Terminal from, Terminal to) {
+    from.setBusy();
+    to.setBusy();
+    VideoCommunication v = new VideoCommunication(_communications.size()+1, from, to);
     v.setStatus("ONGOING");
     from.addMadeCommunication(v);
     to.addReceivedCommunication(v);
@@ -365,6 +375,16 @@ public class Network implements Serializable {
     return aux;
   }
 
+  public Communication getOngoingCommunicationFromTerm(Terminal t)
+  {
+    for (Communication c : _communications){
+      if (c.getTerminalFrom().equals(t) && c.isOngoing()){
+        return c;
+      }
+    }
+    return null;
+  }
+
   public long endOngoingCommunication(int id, int duration) //throws InvalidIdException 
   {
     boolean aux = false;
@@ -373,6 +393,8 @@ public class Network implements Serializable {
       if ((c.getId() == id) && c.isOngoing()){
         aux = true;
         c.setDuration(duration);
+        c.setStatus("FINISHED");
+        c.setUnits(duration);
         cost = Math.round(c.computeCost(c.getTerminalFrom().getClient().getClientLevel()));
       }  
     }

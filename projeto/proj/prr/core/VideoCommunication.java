@@ -4,7 +4,7 @@ public class VideoCommunication extends Communication{
 	private int _duration;
 
 	public VideoCommunication(int id, Terminal from, Terminal to){
-		super(id, from, to, "VIDEO");
+		super(id, from, to, "VIDEO", 0);
 	}
 
 	public boolean equals(VideoCommunication c1){

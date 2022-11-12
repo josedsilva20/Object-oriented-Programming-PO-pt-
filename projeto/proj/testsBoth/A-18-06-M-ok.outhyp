@@ -29,7 +29,7 @@ OPERAÇÕES DO TERMINAL
 Escolha uma opção: 9
 Número do terminal: 969008
 Tipo de comunicação a iniciar (VOICE, VIDEO): VOICE
-O terminal '969008' não pode receber comunicações VOICE
+O terminal de destino ('969008') está em silêncio.
 OPERAÇÕES DO TERMINAL
 1 - Ligar
 2 - Colocar no silêncio

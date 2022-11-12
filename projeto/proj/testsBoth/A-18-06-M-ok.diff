@@ -1,22 +1,5 @@
 *** testsBoth/A-18-06-M-ok.out	Mon Oct 31 21:52:55 2022
---- testsBoth/A-18-06-M-ok.outhyp	Sat Nov 12 13:15:33 2022
-***************
-*** 29,35 ****
-  Escolha uma opção: 9
-  Número do terminal: 969008
-  Tipo de comunicação a iniciar (VOICE, VIDEO): VOICE
-! O terminal de destino ('969008') está em silêncio.
-  OPERAÇÕES DO TERMINAL
-  1 - Ligar
-  2 - Colocar no silêncio
---- 29,35 ----
-  Escolha uma opção: 9
-  Número do terminal: 969008
-  Tipo de comunicação a iniciar (VOICE, VIDEO): VOICE
-! O terminal '969008' não pode receber comunicações VOICE
-  OPERAÇÕES DO TERMINAL
-  1 - Ligar
-  2 - Colocar no silêncio
+--- testsBoth/A-18-06-M-ok.outhyp	Sat Nov 12 18:23:42 2022
 ***************
 *** 68,74 ****
   0 - Sair

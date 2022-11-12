@@ -4,7 +4,7 @@ public class TextCommunication extends Communication{
 	private String _message;
 
 	public TextCommunication(int id, Terminal from, Terminal to, String message){
-		super(id, from, to, "TEXT");
+		super(id, from, to, "TEXT", message.length());
 		_message = message;
 	}
 
@@ -16,7 +16,7 @@ public class TextCommunication extends Communication{
 	protected double computeCost(String plan){
 		double price = 10;
 		if (plan.equals("NORMAL")){
-			if (50 >= getSize() && getSize() < 100)
+			if (getSize() >= 50 && getSize() < 100)
 				price = 16;
 			if (getSize() >= 100)
 				price = 2 * getSize();
@@ -28,7 +28,7 @@ public class TextCommunication extends Communication{
 		}
 
 		if (plan.equals("PLATINUM")){
-			if (50 >= getSize() && getSize() < 100)
+			if (getSize() >= 50 && getSize() < 100)
 				price = 4;
 			else if (getSize() >= 100)
 				price = 4;

@@ -10,6 +10,7 @@ import prr.core.exception.UnsopportedFromComException;
 import prr.core.exception.UnsopportedComToException;
 import prr.core.exception.InvalidIdException;
 import prr.core.exception.DestinatioOffException;
+import prr.core.exception.TerminalIsSilenteException;
 
 
 /**
@@ -39,7 +40,9 @@ class DoStartInteractiveCommunication extends TerminalCommand {
     catch (DestinatioOffException doe){
       _display.addLine(Message.destinationIsOff(to));
     }
-
+    catch (TerminalIsSilenteException tise){
+      _display.addLine(Message.destinationIsSilent(to));
+    }
     catch (UnsopportedComToException ucte){
       _display.addLine(Message.unsupportedAtDestination(to, type));
     }

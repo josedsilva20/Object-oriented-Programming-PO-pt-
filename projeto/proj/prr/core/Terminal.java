@@ -170,6 +170,8 @@ public class Terminal implements Serializable, Observer/* FIXME maybe addd more 
    *          it was the originator of this communication.
    **/
   public boolean canEndCurrentCommunication() {
+    if (isBusy())
+      return true;
     // FIXME add implementation code
     return false;
   }
@@ -278,11 +280,11 @@ public class Terminal implements Serializable, Observer/* FIXME maybe addd more 
 
 
     //corrigir _madeCommunications para id que vem do network.
-    public Communication sendTextCommunication(Terminal to, String msg) throws SendNotificationException {
+    public Communication sendTextCommunication(Terminal to, String msg, int id) throws SendNotificationException {
       if (to.isOff())
         throw new SendNotificationException();
       long price = 0;
-      TextCommunication t = new TextCommunication(_madeCommunications.size(), this, to, msg);
+      TextCommunication t = new TextCommunication(id, this, to, msg);
       if(!isOff() && !isBusy()){
         if (_friends.contains(to))
           price = Math.round(t.computeCost(_owner.getClientLevel())/2);
