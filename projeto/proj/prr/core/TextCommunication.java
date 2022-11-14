@@ -13,6 +13,7 @@ public class TextCommunication extends Communication{
 	}
 
 	//all methods above are going to be overriden.
+	@Override
 	protected double computeCost(String plan){
 		double price = 10;
 		if (plan.equals("NORMAL")){

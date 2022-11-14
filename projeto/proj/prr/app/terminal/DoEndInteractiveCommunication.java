@@ -21,16 +21,13 @@ class DoEndInteractiveCommunication extends TerminalCommand {
   protected final void execute() throws CommandException {
     int duration = integerField("duration");
     try{
-      _display.addLine(Message.communicationCost(_network.endOngoingCommunication(_network.getOngoingCommunicationId(_receiver), duration)));
-      _receiver.setIdle();
-      Communication c = _network.getOngoingCommunicationFromTerm(_receiver);
-      Terminal to = c.getTerminalTo();
-      to.setIdle();
+      //_network.getOngoingCommunicationId(_receiver)
+      int cost = (int) _network.endOngoingCommunication(_receiver, duration);
+      _display.addLine(Message.communicationCost(cost));
     }
     catch(SendNotificationException sne){
       
     }
-
     _display.display();
   }
 }

@@ -307,24 +307,30 @@ public class Network implements Serializable {
 
 
   public void startVoiceCall(Terminal from, Terminal to) {
+    from.saveMode();
+    to.saveMode();
     from.setBusy();
     to.setBusy();
     VoiceCommunication v = new VoiceCommunication(_communications.size()+1, from, to);
     v.setStatus("ONGOING");
     from.addMadeCommunication(v);
+    from.activateMadeCom();
     to.addReceivedCommunication(v);
     _communications.add(v);
-    from.getClient().iterateVideoCount();
   }
 
   public void startVideoCall(Terminal from, Terminal to) {
+    from.saveMode();
+    to.saveMode();
     from.setBusy();
     to.setBusy();
     VideoCommunication v = new VideoCommunication(_communications.size()+1, from, to);
     v.setStatus("ONGOING");
     from.addMadeCommunication(v);
+    from.activateMadeCom();
     to.addReceivedCommunication(v);
     _communications.add(v);
+    from.getClient().iterateVideoCount();
   }
 
   /*public Communication getCommunicationByIdAux(int id) {
@@ -385,17 +391,33 @@ public class Network implements Serializable {
     return null;
   }
 
-  public long endOngoingCommunication(int id, int duration) //throws InvalidIdException 
+  public long endOngoingCommunication(Terminal from, int duration) throws SendNotificationException 
   {
     boolean aux = false;
     long cost = 0;
     for (Communication c : _communications){
-      if ((c.getId() == id) && c.isOngoing()){
+      //cost = 10;
+      if (c.getTerminalFrom() == from && c.isOngoing()){
         aux = true;
         c.setDuration(duration);
         c.setStatus("FINISHED");
         c.setUnits(duration);
+
         cost = Math.round(c.computeCost(c.getTerminalFrom().getClient().getClientLevel()));
+        try {
+          from.loadMode();
+          from.addDebt(cost);
+          from.disableMadeCom();
+          /*for (Terminal t : _terminals){
+            if (t == from || t == c.getTerminalTo()) {
+              //cost += 10;
+              idleTerminal(t);
+            }
+          }*/
+          c.getTerminalTo().loadMode();
+        } catch (SendNotificationException sne) {
+          throw sne;
+        } //catch (InvalidIdException iie) {}
       }  
     }
     //if (!aux)

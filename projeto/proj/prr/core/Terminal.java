@@ -34,6 +34,8 @@ public class Terminal implements Serializable, Observer/* FIXME maybe addd more 
   private String _type;
   private List<Observer> observers = new ArrayList<Observer>();
   private Terminal _sendNotification;
+  private boolean _madeCom;
+  private TerminalMode _modeAnterior;
 
 
   // FIXME define contructor(s)
@@ -46,6 +48,7 @@ public class Terminal implements Serializable, Observer/* FIXME maybe addd more 
     _mode = TerminalMode.IDLE;
     _madeCommunications = new ArrayList<>();
     _receivedCommunications = new ArrayList<>();
+    _madeCom = false;
   }
 
   public Terminal(){
@@ -170,7 +173,7 @@ public class Terminal implements Serializable, Observer/* FIXME maybe addd more 
    *          it was the originator of this communication.
    **/
   public boolean canEndCurrentCommunication() {
-    if (isBusy())
+    if (isBusy() && hasMadeCom())
       return true;
     // FIXME add implementation code
     return false;
@@ -250,9 +253,9 @@ public class Terminal implements Serializable, Observer/* FIXME maybe addd more 
       } catch(SendNotificationException sne){
         throw sne;
       }
+    }
 
     _mode = TerminalMode.IDLE;
-    }
   }
 
   public void registerObserver(Observer observer) {
@@ -294,7 +297,32 @@ public class Terminal implements Serializable, Observer/* FIXME maybe addd more 
       addDebt(price);
       return t;
     }
+
+    public boolean hasMadeCom(){
+      return _madeCom;
+    }
+
+    public void activateMadeCom(){
+      _madeCom = true;
+    }
+    public void disableMadeCom(){
+      _madeCom = false;
+    }
     
+    public void saveMode(){
+      _modeAnterior = _mode;
+    }
+    public void loadMode() throws SendNotificationException{
+      try {
+        if (_modeAnterior == TerminalMode.SILENCE) {
+          setSilence();
+        }
+        else
+          setIdle();
+      } catch (SendNotificationException sne){
+        throw sne;
+      }
+    }
     //public List<Communication> getOngoingCommunications()
     
 }

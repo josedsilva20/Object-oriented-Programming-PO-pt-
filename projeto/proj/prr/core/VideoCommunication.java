@@ -11,6 +11,7 @@ public class VideoCommunication extends Communication{
 		return this.getId() == c1.getId();
 	}
 
+	@Override
 	protected double computeCost(String plan){
 		double price = 10;
 		if (plan.equals("NORMAL"))
