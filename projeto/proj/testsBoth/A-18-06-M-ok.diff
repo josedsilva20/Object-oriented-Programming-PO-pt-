@@ -1,54 +1,12 @@
 *** testsBoth/A-18-06-M-ok.out	Mon Oct 31 21:52:55 2022
---- testsBoth/A-18-06-M-ok.outhyp	Sat Nov 12 18:23:42 2022
+--- testsBoth/A-18-06-M-ok.outhyp	Mon Nov 14 17:17:00 2022
 ***************
-*** 68,74 ****
-  0 - Sair
+*** 172,178 ****
   Escolha uma opção: 1
   Identificador do cliente: cli001
-! CLIENT|cli001|Manuel Pinheiro|103443|NORMAL|YES|4|0|0
+  CLIENT|cli001|Manuel Pinheiro|103443|NORMAL|YES|4|0|0
+- O2I|969008
   GESTÃO DE CLIENTES
   1 - Visualizar cliente
   2 - Visualizar todos os clientes
---- 68,74 ----
-  0 - Sair
-  Escolha uma opção: 1
-  Identificador do cliente: cli001
-! CLIENT|cli001|Manuel Pinheiro|103443|NORMAL|YES|3|0|0
-  GESTÃO DE CLIENTES
-  1 - Visualizar cliente
-  2 - Visualizar todos os clientes
-***************
-*** 171,178 ****
-  0 - Sair
-  Escolha uma opção: 1
-  Identificador do cliente: cli001
-! CLIENT|cli001|Manuel Pinheiro|103443|NORMAL|YES|4|0|0
-! O2I|969008
-  GESTÃO DE CLIENTES
-  1 - Visualizar cliente
-  2 - Visualizar todos os clientes
---- 171,177 ----
-  0 - Sair
-  Escolha uma opção: 1
-  Identificador do cliente: cli001
-! CLIENT|cli001|Manuel Pinheiro|103443|NORMAL|YES|3|0|0
-  GESTÃO DE CLIENTES
-  1 - Visualizar cliente
-  2 - Visualizar todos os clientes
-***************
-*** 182,188 ****
-  6 - Mostrar saldo de cliente
-  0 - Sair
-  Escolha uma opção: 2
-! CLIENT|cli001|Manuel Pinheiro|103443|NORMAL|YES|4|0|0
-  CLIENT|cli002|Pedro Pinheiro|103447|NORMAL|YES|2|0|0
-  CLIENT|cli003|Pedro Oliveira|103449|NORMAL|YES|3|0|0
-  CLIENT|cli201|Ludgero Oliveira|103440|NORMAL|YES|0|0|0
---- 181,187 ----
-  6 - Mostrar saldo de cliente
-  0 - Sair
-  Escolha uma opção: 2
-! CLIENT|cli001|Manuel Pinheiro|103443|NORMAL|YES|3|0|0
-  CLIENT|cli002|Pedro Pinheiro|103447|NORMAL|YES|2|0|0
-  CLIENT|cli003|Pedro Oliveira|103449|NORMAL|YES|3|0|0
-  CLIENT|cli201|Ludgero Oliveira|103440|NORMAL|YES|0|0|0
+--- 172,177 ----

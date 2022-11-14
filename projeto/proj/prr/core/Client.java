@@ -47,7 +47,7 @@ public class Client implements Serializable{
 			client += "NO";
 		}
 		if (_terminals.size() != 0)
-			return client + "|" + getActiveTerminals() + "|" + (int)_payments + "|" + (int)_debts;
+			return client + "|" + _terminals.size() + "|" + (int)_payments + "|" + (int)_debts;
 		return client + "|" + 0 + "|" + 0 + "|" + 0;
 	}
 

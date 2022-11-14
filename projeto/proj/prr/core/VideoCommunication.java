@@ -12,13 +12,13 @@ public class VideoCommunication extends Communication{
 	}
 
 	@Override
-	protected double computeCost(String plan){
-		double price = 10;
+	protected double computeCost(String plan, int duration){
+		double price = 10 * duration;
 		if (plan.equals("NORMAL"))
-			price = 30;
+			price = 30 * duration;
 
 		if (plan.equals("GOLD"))
-			price = 20;
+			price = 20 * duration;
 
 		setCost(Math.round(price));
 		return price;

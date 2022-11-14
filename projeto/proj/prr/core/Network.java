@@ -115,7 +115,7 @@ public class Network implements Serializable {
         clients.add(c.toString());
       if(type.equals("positive") && (c.getPayments() - c.getDebts() >= 0))
         clients.add(c.toString());
-    }
+    } 
 
     return clients;
   }
@@ -176,7 +176,8 @@ public class Network implements Serializable {
   public void addFriend(Terminal terminal, String id)  throws InvalidIdException{
     if (!_terminals.contains(getTerminalById(id)))
       throw new InvalidIdException();
-    terminal.addFriendTerminal(getTerminalById(id));
+    if (!terminal.getOrderedFriends().contains(getTerminalById(id)))
+      terminal.addFriendTerminal(getTerminalById(id));
   }
 
   public void removeFriend(Terminal terminal, String id)  throws InvalidIdException{
@@ -403,7 +404,7 @@ public class Network implements Serializable {
         c.setStatus("FINISHED");
         c.setUnits(duration);
 
-        cost = Math.round(c.computeCost(c.getTerminalFrom().getClient().getClientLevel()));
+        cost = Math.round(c.computeCost(c.getTerminalFrom().getClient().getClientLevel(), duration));
         try {
           from.loadMode();
           from.addDebt(cost);
@@ -423,6 +424,25 @@ public class Network implements Serializable {
     //if (!aux)
       //throw new InvalidIdException();
     return cost;
+  }
+
+  /*________________________________________________________________________*/
+        //  GLOBAL STATUS
+
+  public long showGlobalPayments(){
+    long balance = 0;
+    for (Client client : _clients){
+      balance += client.getPayments();
+    }
+    return balance;
+  }
+
+  public long showGlobalDebts(){
+    long balance = 0;
+    for (Client client : _clients){
+      balance += client.getDebts();
+    }
+    return balance;
   }
 
 

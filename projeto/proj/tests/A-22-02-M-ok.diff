@@ -1,0 +1,31 @@
+*** tests/A-22-02-M-ok.out	Mon Oct 31 09:20:16 2022
+--- tests/A-22-02-M-ok.outhyp	Mon Nov 14 17:04:19 2022
+***************
+*** 110,118 ****
+  6 - Mostrar terminais sem actividade
+  7 - Mostrar terminais com saldo positivo
+  0 - Sair
+! Escolha uma opção: Identificador do cliente: VIDEO|1|969015|969014|1|30|FINISHED
+! VOICE|2|969011|969014|2|40|FINISHED
+! CONSULTAS
+  1 - Mostrar todas as comunicações
+  2 - Mostrar comunicações feitas por um cliente
+  3 - Mostrar comunicações recebidas por um cliente
+--- 110,116 ----
+  6 - Mostrar terminais sem actividade
+  7 - Mostrar terminais com saldo positivo
+  0 - Sair
+! Escolha uma opção: CONSULTAS
+  1 - Mostrar todas as comunicações
+  2 - Mostrar comunicações feitas por um cliente
+  3 - Mostrar comunicações recebidas por um cliente
+***************
+*** 121,126 ****
+--- 119,125 ----
+  6 - Mostrar terminais sem actividade
+  7 - Mostrar terminais com saldo positivo
+  0 - Sair
++ Escolha uma opção: Número inválido!
+  Escolha uma opção: MENU PRINCIPAL
+  1 - Abrir
+  2 - Guardar

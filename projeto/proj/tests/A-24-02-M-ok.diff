@@ -1,0 +1,59 @@
+*** tests/A-24-02-M-ok.out	Tue Nov  1 15:49:54 2022
+--- tests/A-24-02-M-ok.outhyp	Mon Nov 14 17:04:24 2022
+***************
+*** 105,111 ****
+  9 - Iniciar comunicação
+  11 - Mostrar comunicação em curso
+  0 - Sair
+! Escolha uma opção: Número da comunicação: OPERAÇÕES DO TERMINAL
+  1 - Ligar
+  2 - Colocar no silêncio
+  3 - Desligar
+--- 105,111 ----
+  9 - Iniciar comunicação
+  11 - Mostrar comunicação em curso
+  0 - Sair
+! Escolha uma opção: OPERAÇÕES DO TERMINAL
+  1 - Ligar
+  2 - Colocar no silêncio
+  3 - Desligar
+***************
+*** 117,122 ****
+--- 117,135 ----
+  9 - Iniciar comunicação
+  11 - Mostrar comunicação em curso
+  0 - Sair
++ Escolha uma opção: O terminal já estava ligado.
++ OPERAÇÕES DO TERMINAL
++ 1 - Ligar
++ 2 - Colocar no silêncio
++ 3 - Desligar
++ 4 - Adicionar amigo
++ 5 - Retirar amigo
++ 6 - Pagamento
++ 7 - Consultar saldo
++ 8 - Enviar comunicação de texto
++ 9 - Iniciar comunicação
++ 11 - Mostrar comunicação em curso
++ 0 - Sair
+  Escolha uma opção: GESTÃO DE TERMINAIS
+  1 - Mostrar todos os terminais
+  2 - Registar terminal
+***************
+*** 139,146 ****
+  6 - Mostrar terminais sem actividade
+  7 - Mostrar terminais com saldo positivo
+  0 - Sair
+! Escolha uma opção: CLIENT|cli001|Manuel Pinheiro|103443|NORMAL|YES|2|20|0
+! CLIENT|cli002|Pedro Pinheiro|103447|NORMAL|YES|1|0|0
+  CLIENT|cli003|Pedro Oliveira|103449|NORMAL|YES|1|0|0
+  CONSULTAS
+  1 - Mostrar todas as comunicações
+--- 152,158 ----
+  6 - Mostrar terminais sem actividade
+  7 - Mostrar terminais com saldo positivo
+  0 - Sair
+! Escolha uma opção: CLIENT|cli002|Pedro Pinheiro|103447|NORMAL|YES|1|0|0
+  CLIENT|cli003|Pedro Oliveira|103449|NORMAL|YES|1|0|0
+  CONSULTAS
+  1 - Mostrar todas as comunicações

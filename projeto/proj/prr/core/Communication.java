@@ -91,7 +91,7 @@ public abstract class Communication implements Serializable{
 		
 	}
 
-	protected abstract double computeCost(String plan);
+	protected abstract double computeCost(String plan, int duration);
 
 	protected abstract int getSize();
 }

@@ -14,24 +14,24 @@ public class TextCommunication extends Communication{
 
 	//all methods above are going to be overriden.
 	@Override
-	protected double computeCost(String plan){
+	protected double computeCost(String plan, int size){
 		double price = 10;
 		if (plan.equals("NORMAL")){
-			if (getSize() >= 50 && getSize() < 100)
+			if (size >= 50 && size < 100)
 				price = 16;
-			if (getSize() >= 100)
-				price = 2 * getSize();
+			if (size >= 100)
+				price = 2 * size;
 		}
 
 		if (plan.equals("GOLD")){
-			if (getSize() >= 100)
-				price = 2 * getSize();
+			if (size >= 100)
+				price = 2 * size;
 		}
 
 		if (plan.equals("PLATINUM")){
-			if (getSize() >= 50 && getSize() < 100)
+			if (size >= 50 && size < 100)
 				price = 4;
-			else if (getSize() >= 100)
+			else if (size >= 100)
 				price = 4;
 			else 
 				price = 0;

@@ -68,7 +68,7 @@ GESTÃO DE CLIENTES
 0 - Sair
 Escolha uma opção: 1
 Identificador do cliente: cli001
-CLIENT|cli001|Manuel Pinheiro|103443|NORMAL|YES|3|0|0
+CLIENT|cli001|Manuel Pinheiro|103443|NORMAL|YES|4|0|0
 GESTÃO DE CLIENTES
 1 - Visualizar cliente
 2 - Visualizar todos os clientes
@@ -144,7 +144,7 @@ GESTÃO DE CLIENTES
 6 - Mostrar saldo de cliente
 0 - Sair
 Escolha uma opção: 2
-CLIENT|cli001|Manuel Pinheiro|103443|NORMAL|YES|3|0|0
+CLIENT|cli001|Manuel Pinheiro|103443|NORMAL|YES|4|0|0
 CLIENT|cli002|Pedro Pinheiro|103447|NORMAL|YES|2|0|0
 CLIENT|cli003|Pedro Oliveira|103449|NORMAL|YES|3|0|0
 CLIENT|cli201|Ludgero Oliveira|103440|NORMAL|YES|0|0|0
@@ -158,7 +158,7 @@ GESTÃO DE CLIENTES
 0 - Sair
 Escolha uma opção: 1
 Identificador do cliente: cli001
-CLIENT|cli001|Manuel Pinheiro|103443|NORMAL|YES|3|0|0
+CLIENT|cli001|Manuel Pinheiro|103443|NORMAL|YES|4|0|0
 GESTÃO DE CLIENTES
 1 - Visualizar cliente
 2 - Visualizar todos os clientes
@@ -169,7 +169,7 @@ GESTÃO DE CLIENTES
 0 - Sair
 Escolha uma opção: 1
 Identificador do cliente: cli001
-CLIENT|cli001|Manuel Pinheiro|103443|NORMAL|YES|3|0|0
+CLIENT|cli001|Manuel Pinheiro|103443|NORMAL|YES|4|0|0
 GESTÃO DE CLIENTES
 1 - Visualizar cliente
 2 - Visualizar todos os clientes

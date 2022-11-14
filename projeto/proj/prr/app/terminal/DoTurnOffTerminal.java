@@ -22,7 +22,7 @@ class DoTurnOffTerminal extends TerminalCommand {
     try {
       _network.turnOffTerminal(_receiver);
     } catch (InvalidIdException iie){
-      _display.addLine(Message.alreadySilent());
+      _display.addLine(Message.alreadyOff());
       _display.display();
     }
   }

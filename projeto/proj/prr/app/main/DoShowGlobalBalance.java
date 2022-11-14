@@ -16,6 +16,7 @@ class DoShowGlobalBalance extends Command<Network> {
   
   @Override
   protected final void execute() throws CommandException {
-    //FIXME implement command
+    _display.addLine(Message.globalPaymentsAndDebts(_receiver.showGlobalPayments(), _receiver.showGlobalDebts()));
+    _display.display();
   }
 }

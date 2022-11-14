@@ -90,7 +90,8 @@ public class Terminal implements Serializable, Observer/* FIXME maybe addd more 
   }
 
   public void addFriendTerminal(Terminal friend){
-    _friends.add(friend);
+    if (friend.getId() != getId())
+      _friends.add(friend);
   }
 
   public void removeFriendTerminal(Terminal friend){
@@ -145,7 +146,7 @@ public class Terminal implements Serializable, Observer/* FIXME maybe addd more 
   public String toString() {
     String out = "";
     String aux = _type + "|" + _id + "|" + _owner.getKey() + "|" + _mode + "|" + (int)_payments + "|" + (int)_debts;
-    List<Terminal> friends = new ArrayList<>(_friends);
+    List<Terminal> friends = getOrderedFriends();
     // add all friend terminals separated by ","
     int sizeOfList = friends.size();
     for ( Terminal t : friends) {
@@ -290,9 +291,9 @@ public class Terminal implements Serializable, Observer/* FIXME maybe addd more 
       TextCommunication t = new TextCommunication(id, this, to, msg);
       if(!isOff() && !isBusy()){
         if (_friends.contains(to))
-          price = Math.round(t.computeCost(_owner.getClientLevel())/2);
+          price = Math.round(t.computeCost(_owner.getClientLevel(), msg.length())/2);
         else  
-          price = Math.round(t.computeCost(_owner.getClientLevel()));
+          price = Math.round(t.computeCost(_owner.getClientLevel(), msg.length()));
       }
       addDebt(price);
       return t;
