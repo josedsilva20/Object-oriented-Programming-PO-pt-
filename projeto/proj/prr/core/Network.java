@@ -17,6 +17,7 @@ import prr.core.exception.SendNotificationException;
 import prr.core.exception.DestinatioOffException;
 import prr.core.exception.TerminalIsSilenteException;
 
+
 /**
  * Class Store implements a store.
  */
@@ -57,6 +58,17 @@ public class Network implements Serializable {
     if (client.getKey() == null)
       throw new InvalidIdException();
     return client.toString();
+  }
+
+  public List<String> clientNotifications(String id) {
+    Client client = getClientById(id);
+    List<String> notifications = new ArrayList<>();
+    for (Notification not : client.getNotifications()){
+      notifications.add(not.toString());
+    }
+    client.removeNotifications();
+    return notifications;
+
   }
   
 
@@ -198,29 +210,17 @@ public class Network implements Serializable {
   public List<String> getUnusedTerminals(){
     List<String> terminals = new ArrayList<>();
     for(Terminal t : _terminals){
-      if (t.getMadeCommunications() == 0)
+      if (t.getMadeCommunications() == 0 && t.getReceivedCommunications() == 0)
         terminals.add(t.toString());
     }
     return terminals;
   }
-  public void silenceTerminal(Terminal terminal) throws InvalidIdException, SendNotificationException{
+  public void silenceTerminal(Terminal terminal) throws InvalidIdException{
     if (terminal.isSilente())
       throw new InvalidIdException();
-    if (terminal.isIdle()) {
-      try{
-        terminal.setSilence();
-      } catch(SendNotificationException sne){
-        throw sne;
-      }
-    }
-    if (terminal.isBusy()) {
-      try{
-        terminal.setSilence();
-      } catch(SendNotificationException sne){
-        throw sne;
-      }
+    terminal.setSilence();
       //end communication
-    }
+
   }
 
   public void turnOffTerminal(Terminal terminal) throws InvalidIdException{
@@ -242,14 +242,10 @@ public class Network implements Serializable {
     //terminal.setIdle();
   }
 
-  public void idleTerminal(Terminal terminal) throws InvalidIdException, SendNotificationException{
+  public void idleTerminal(Terminal terminal) throws InvalidIdException{
     if (terminal.isIdle())
       throw new InvalidIdException();
-    try{
-      terminal.setIdle();
-    } catch(SendNotificationException sne){
-      throw sne;
-    }
+    terminal.setIdle();
   }
   
   public void sendTextMessage(Terminal from, String to, String msg) throws InvalidIdException, SendNotificationException {
@@ -261,7 +257,10 @@ public class Network implements Serializable {
     catch(InvalidIdException iie){
       throw iie;
     }
+    //-------
     catch(SendNotificationException sne){
+      if (from.getClient().isReceiverActive())
+        getTerminalById(to).registerObserver(from.getClient());
       throw sne;
     }
     _communications.add(com);
@@ -276,7 +275,7 @@ public class Network implements Serializable {
   }
 
   public void startInteractiveCommunication(String type,String from, String to)throws InvalidIdException, TerminalIsSilenteException,//
-  TerminalIsBusyException, UnsopportedComToException, UnsopportedComToException, InvalidIdException,
+  TerminalIsBusyException, UnsopportedComToException, UnsopportedFromComException, InvalidIdException,
   DestinatioOffException{
     
     try{
@@ -288,20 +287,28 @@ public class Network implements Serializable {
       throw iie;
     }
 
-    if(getTerminalById(to).isBusy())
+    if(getTerminalById(to).isBusy() && getTerminalById(from).getClient().isReceiverActive()) {
+      getTerminalById(to).registerObserver(getTerminalById(from).getClient());
       throw new TerminalIsBusyException();
+    }
     
-    else if(getTerminalById(to).isOff())
+    else if(getTerminalById(to).isOff() && getTerminalById(from).getClient().isReceiverActive()) {
+      getTerminalById(to).registerObserver(getTerminalById(from).getClient());
       throw new DestinatioOffException();
+    }
 
-    else if(getTerminalById(to).isSilente())
+    else if(getTerminalById(to).isSilente() && getTerminalById(from).getClient().isReceiverActive()){
+      getTerminalById(to).registerObserver(getTerminalById(from).getClient());
       throw new TerminalIsSilenteException();
+    }
 
     if (type.equals("VOICE"))
       startVoiceCall(getTerminalById(from), getTerminalById(to));
     else{
       if(!(getTerminalById(to).getType().equals("FANCY")))
         throw new UnsopportedComToException();
+        if (!(getTerminalById(from).getType().equals("FANCY")))
+          throw new UnsopportedFromComException();
       startVideoCall(getTerminalById(from), getTerminalById(to));
     }
   }
@@ -392,7 +399,7 @@ public class Network implements Serializable {
     return null;
   }
 
-  public long endOngoingCommunication(Terminal from, int duration) throws SendNotificationException 
+  public long endOngoingCommunication(Terminal from, int duration) 
   {
     boolean aux = false;
     long cost = 0;
@@ -403,22 +410,21 @@ public class Network implements Serializable {
         c.setDuration(duration);
         c.setStatus("FINISHED");
         c.setUnits(duration);
-
-        cost = Math.round(c.computeCost(c.getTerminalFrom().getClient().getClientLevel(), duration));
-        try {
-          from.loadMode();
-          from.addDebt(cost);
-          from.disableMadeCom();
+        if (c.areFriends(from, c.getTerminalTo()))
+          cost = Math.round(c.computeCost(c.getTerminalFrom().getClient().getClientLevel(), duration) / 2);
+        else
+          cost = Math.round(c.computeCost(c.getTerminalFrom().getClient().getClientLevel(), duration));
+        from.loadMode();
+        from.addDebt(cost);
+        c.setCost(cost);
+        from.disableMadeCom();
           /*for (Terminal t : _terminals){
             if (t == from || t == c.getTerminalTo()) {
               //cost += 10;
               idleTerminal(t);
             }
           }*/
-          c.getTerminalTo().loadMode();
-        } catch (SendNotificationException sne) {
-          throw sne;
-        } //catch (InvalidIdException iie) {}
+          c.getTerminalTo().loadMode();//catch (InvalidIdException iie) {}
       }  
     }
     //if (!aux)
@@ -445,6 +451,47 @@ public class Network implements Serializable {
     return balance;
   }
 
+  public String showClientMadeCommunications(String id) throws InvalidIdException {
+    String aux = "";
+    Client client = getClientById(id);
+    if (client.getKey() == null)
+      throw new InvalidIdException();
+    List<String> madeCommunications = client.getMadeCommunications();
+    for (String communication : madeCommunications) {
+      aux += communication;
+    }
+    return aux;
+  }
+
+  public String showClientReceivedCommunications(String id) throws InvalidIdException {
+    String aux = "";
+    Client client = getClientById(id);
+    if (client.getKey() == null)
+      throw new InvalidIdException();
+    List<String> receivedCommunications = client.getReceivedCommunications();
+    for (String communication : receivedCommunications) {
+      aux += communication;
+    }
+    return aux;
+  }
+
+  public void payCommunication(Terminal from, int commId)  throws InvalidIdException {
+    boolean hasCommunication = false;
+    Communication communication = new VoiceCommunication();
+    for (Communication c : _communications){
+      if (c.getId() == commId)
+        hasCommunication = true;
+        communication = c;
+    }
+    if (!hasCommunication)
+      throw new InvalidIdException();
+    try {
+      from.pay(communication);
+    } catch (InvalidIdException iie) {
+        throw iie;
+    }
+  }
+
 
   /**
    * Read text input file and create corresponding domain entities.
@@ -458,5 +505,4 @@ public class Network implements Serializable {
     parse.parseFile(filename);
   }
 
-  
 }

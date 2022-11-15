@@ -1,5 +1,5 @@
 *** tests/A-13-21-M-ok.out	Thu Nov  3 22:36:23 2022
---- tests/A-13-21-M-ok.outhyp	Mon Nov 14 17:03:50 2022
+--- tests/A-13-21-M-ok.outhyp	Tue Nov 15 17:32:45 2022
 ***************
 *** 54,60 ****
   10 - Terminar comunicação activa
@@ -18,10 +18,12 @@
   1 - Ligar
   2 - Colocar no silêncio
 ***************
-*** 103,116 ****
+*** 101,116 ****
+  6 - Mostrar terminais sem actividade
+  7 - Mostrar terminais com saldo positivo
   0 - Sair
-  Escolha uma opção: VOICE|1|969001|969006|13|260|FINISHED
-  VOICE|2|969001|969014|13|260|FINISHED
+! Escolha uma opção: VOICE|1|969001|969006|13|260|FINISHED
+! VOICE|2|969001|969014|13|260|FINISHED
 ! VIDEO|3|969011|969014|1|20|FINISHED
 ! VIDEO|4|969011|969015|1|20|FINISHED
 ! VIDEO|5|969011|969014|1|20|FINISHED
@@ -33,10 +35,12 @@
   CONSULTAS
   1 - Mostrar todas as comunicações
   2 - Mostrar comunicações feitas por um cliente
---- 103,116 ----
+--- 101,116 ----
+  6 - Mostrar terminais sem actividade
+  7 - Mostrar terminais com saldo positivo
   0 - Sair
-  Escolha uma opção: VOICE|1|969001|969006|13|260|FINISHED
-  VOICE|2|969001|969014|13|260|FINISHED
+! Escolha uma opção: VOICE|3|969001|969006|13|260|FINISHED
+! VOICE|3|969001|969014|13|260|FINISHED
 ! VIDEO|3|969011|969014|1|30|FINISHED
 ! VIDEO|4|969011|969015|1|30|FINISHED
 ! VIDEO|5|969011|969014|1|30|FINISHED

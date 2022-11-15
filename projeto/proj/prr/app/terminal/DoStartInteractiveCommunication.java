@@ -13,6 +13,7 @@ import prr.core.exception.DestinatioOffException;
 import prr.core.exception.TerminalIsSilenteException;
 
 
+
 /**
  * Command for starting communication.
  */
@@ -33,6 +34,9 @@ class DoStartInteractiveCommunication extends TerminalCommand {
     }
     catch (InvalidIdException iie){
       throw new UnknownTerminalKeyException(to);
+    }
+    catch (UnsopportedFromComException ufce){
+      _display.addLine(Message.unsupportedAtOrigin(_receiver.getId(), type));
     }
     catch (TerminalIsBusyException tibe){
       _display.addLine(Message.destinationIsBusy(to));

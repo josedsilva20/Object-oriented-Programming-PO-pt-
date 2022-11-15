@@ -94,7 +94,6 @@ public class Parser {
       throw new UnrecognizedEntryException("Invalid specification: " + line, iie);
     } catch (DuplTerminalKeyException dtke) {
       throw new UnrecognizedEntryException("Invalid specification: " + line, dtke);
-    } catch(SendNotificationException sne){
     }
   }
 

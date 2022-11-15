@@ -1,97 +1,21 @@
 *** tests/A-26-04-M-ok.out	Sun Nov  6 16:28:18 2022
---- tests/A-26-04-M-ok.outhyp	Mon Nov 14 17:04:28 2022
+--- tests/A-26-04-M-ok.outhyp	Tue Nov 15 17:33:20 2022
 ***************
-*** 47,53 ****
-  9 - Iniciar comunicação
-  11 - Mostrar comunicação em curso
-  0 - Sair
-! Escolha uma opção: Número da comunicação: OPERAÇÕES DO TERMINAL
-  1 - Ligar
-  2 - Colocar no silêncio
-  3 - Desligar
---- 47,53 ----
-  9 - Iniciar comunicação
-  11 - Mostrar comunicação em curso
-  0 - Sair
-! Escolha uma opção: OPERAÇÕES DO TERMINAL
-  1 - Ligar
-  2 - Colocar no silêncio
-  3 - Desligar
-***************
-*** 59,64 ****
---- 59,77 ----
-  9 - Iniciar comunicação
-  11 - Mostrar comunicação em curso
-  0 - Sair
-+ Escolha uma opção: O terminal já estava ligado.
-+ OPERAÇÕES DO TERMINAL
-+ 1 - Ligar
-+ 2 - Colocar no silêncio
-+ 3 - Desligar
-+ 4 - Adicionar amigo
-+ 5 - Retirar amigo
-+ 6 - Pagamento
-+ 7 - Consultar saldo
-+ 8 - Enviar comunicação de texto
-+ 9 - Iniciar comunicação
-+ 11 - Mostrar comunicação em curso
-+ 0 - Sair
-  Escolha uma opção: Número do terminal: Tipo de comunicação a iniciar (VOICE, VIDEO): OPERAÇÕES DO TERMINAL
-  1 - Ligar
-  2 - Colocar no silêncio
-***************
-*** 83,89 ****
-  9 - Iniciar comunicação
-  11 - Mostrar comunicação em curso
-  0 - Sair
-! Escolha uma opção: Número da comunicação: OPERAÇÕES DO TERMINAL
-  1 - Ligar
-  2 - Colocar no silêncio
-  3 - Desligar
---- 96,102 ----
-  9 - Iniciar comunicação
-  11 - Mostrar comunicação em curso
-  0 - Sair
-! Escolha uma opção: OPERAÇÕES DO TERMINAL
-  1 - Ligar
-  2 - Colocar no silêncio
-  3 - Desligar
-***************
-*** 95,100 ****
---- 108,125 ----
-  9 - Iniciar comunicação
-  11 - Mostrar comunicação em curso
-  0 - Sair
-+ Escolha uma opção: OPERAÇÕES DO TERMINAL
-+ 1 - Ligar
-+ 2 - Colocar no silêncio
-+ 3 - Desligar
-+ 4 - Adicionar amigo
-+ 5 - Retirar amigo
-+ 6 - Pagamento
-+ 7 - Consultar saldo
-+ 8 - Enviar comunicação de texto
-+ 9 - Iniciar comunicação
-+ 11 - Mostrar comunicação em curso
-+ 0 - Sair
-  Escolha uma opção: Número do terminal: Tipo de comunicação a iniciar (VOICE, VIDEO): OPERAÇÕES DO TERMINAL
-  1 - Ligar
-  2 - Colocar no silêncio
-***************
-*** 203,210 ****
+*** 189,196 ****
   6 - Mostrar terminais sem actividade
   7 - Mostrar terminais com saldo positivo
   0 - Sair
-! Escolha uma opção: FANCY|969002|cli002|IDLE|490|240
-! CONSULTAS
-  1 - Mostrar todas as comunicações
-  2 - Mostrar comunicações feitas por um cliente
-  3 - Mostrar comunicações recebidas por um cliente
---- 228,234 ----
+! Escolha uma opção: VOICE|1|969002|969001|23|460|FINISHED
+! VIDEO|2|969002|969006|1|30|FINISHED
+  VOICE|3|969002|969005|10|200|FINISHED
+  VOICE|4|969002|969006|1|20|FINISHED
+  VOICE|5|969002|969005|1|20|FINISHED
+--- 189,196 ----
   6 - Mostrar terminais sem actividade
   7 - Mostrar terminais com saldo positivo
   0 - Sair
-! Escolha uma opção: CONSULTAS
-  1 - Mostrar todas as comunicações
-  2 - Mostrar comunicações feitas por um cliente
-  3 - Mostrar comunicações recebidas por um cliente
+! Escolha uma opção: VOICE|3|969002|969001|23|460|FINISHED
+! VIDEO|3|969002|969006|1|30|FINISHED
+  VOICE|3|969002|969005|10|200|FINISHED
+  VOICE|4|969002|969006|1|20|FINISHED
+  VOICE|5|969002|969005|1|20|FINISHED

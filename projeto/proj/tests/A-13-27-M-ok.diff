@@ -1,5 +1,5 @@
 *** tests/A-13-27-M-ok.out	Thu Nov  3 23:23:39 2022
---- tests/A-13-27-M-ok.outhyp	Mon Nov 14 17:03:53 2022
+--- tests/A-13-27-M-ok.outhyp	Tue Nov 15 17:32:47 2022
 ***************
 *** 42,48 ****
   10 - Terminar comunicação activa
@@ -69,10 +69,12 @@
   CLIENT|cli003|Pedro Oliveira|103449|NORMAL|YES|3|0|0
   CLIENT|cli201|Ludgero Oliveira|103440|NORMAL|YES|0|0|0
 ***************
-*** 247,260 ****
+*** 245,260 ****
+  6 - Mostrar terminais sem actividade
+  7 - Mostrar terminais com saldo positivo
   0 - Sair
-  Escolha uma opção: VOICE|1|969001|969006|13|260|FINISHED
-  VOICE|2|969001|969014|13|260|FINISHED
+! Escolha uma opção: VOICE|1|969001|969006|13|260|FINISHED
+! VOICE|2|969001|969014|13|260|FINISHED
 ! VIDEO|3|969011|969014|1|20|FINISHED
 ! VIDEO|4|969011|969015|1|20|FINISHED
 ! VIDEO|5|969011|969014|1|20|FINISHED
@@ -84,10 +86,12 @@
   CONSULTAS
   1 - Mostrar todas as comunicações
   2 - Mostrar comunicações feitas por um cliente
---- 247,260 ----
+--- 245,260 ----
+  6 - Mostrar terminais sem actividade
+  7 - Mostrar terminais com saldo positivo
   0 - Sair
-  Escolha uma opção: VOICE|1|969001|969006|13|260|FINISHED
-  VOICE|2|969001|969014|13|260|FINISHED
+! Escolha uma opção: VOICE|3|969001|969006|13|260|FINISHED
+! VOICE|3|969001|969014|13|260|FINISHED
 ! VIDEO|3|969011|969014|1|30|FINISHED
 ! VIDEO|4|969011|969015|1|30|FINISHED
 ! VIDEO|5|969011|969014|1|30|FINISHED

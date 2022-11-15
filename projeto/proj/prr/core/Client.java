@@ -6,7 +6,7 @@ import java.util.*;
 import prr.core.exception.InvalidIdException;
 import prr.core.exception.DuplTerminalKeyException;
 
-public class Client implements Serializable{
+public class Client implements Serializable, Observer{
 	private String _key;
 	private String _name;
 	private double _payments;
@@ -18,6 +18,7 @@ public class Client implements Serializable{
 	private TariffPlan _tariffPlan;
 	private int _numberOfVideoCommunications;
 	private boolean _differentFromVideo = false;
+	private List<Notification> _notifications;
 
 
 	public Client(String key, String name, int taxId){
@@ -26,6 +27,7 @@ public class Client implements Serializable{
 		_taxId = taxId;
 		_level = "NORMAL";
 		_terminals = new ArrayList<Terminal>();
+		_notifications = new ArrayList<>();
 		_receiveNotifications = true;
 	}
 
@@ -47,7 +49,7 @@ public class Client implements Serializable{
 			client += "NO";
 		}
 		if (_terminals.size() != 0)
-			return client + "|" + _terminals.size() + "|" + (int)_payments + "|" + (int)_debts;
+			return client + "|" + _terminals.size() + "|" + Math.round(_payments) + "|" + Math.round(_debts);
 		return client + "|" + 0 + "|" + 0 + "|" + 0;
 	}
 
@@ -139,5 +141,36 @@ public class Client implements Serializable{
 			if((_payments - _debts) > 500)
 				_level = "GOLD";
 		}
+	}
+
+
+	public List<String> getMadeCommunications() {
+		List<String> aux = new ArrayList<String>();
+		for (Terminal terminal : _terminals){
+			aux.add(terminal.getListMadeCommunications());
+		}
+		return aux;
+	}
+	
+	public List<String> getReceivedCommunications() {
+		List<String> aux = new ArrayList<String>();
+		for (Terminal terminal : _terminals){
+			aux.add(terminal.getListReceivedCommunications());
+		}
+		return aux;
+	}
+
+	@Override
+	public void update(Notification notification) {
+        //_notifications.add(notification);
+		_notifications.add(notification);
+    }
+	
+	public List<Notification> getNotifications() {
+		return _notifications;
+	}
+
+	public void removeNotifications(){
+		_notifications.removeAll(_notifications);
 	}
 }

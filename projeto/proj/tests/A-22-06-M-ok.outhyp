@@ -163,7 +163,11 @@ Escolha uma opção: CONSULTAS
 6 - Mostrar terminais sem actividade
 7 - Mostrar terminais com saldo positivo
 0 - Sair
-Escolha uma opção: CONSULTAS
+Escolha uma opção: Identificador do cliente: VOICE|1|969014|969001|1|20|FINISHED
+VOICE|2|969007|969011|1|20|FINISHED
+VOICE|4|969015|969013|1|20|FINISHED
+
+CONSULTAS
 1 - Mostrar todas as comunicações
 2 - Mostrar comunicações feitas por um cliente
 3 - Mostrar comunicações recebidas por um cliente
@@ -172,7 +176,6 @@ Escolha uma opção: CONSULTAS
 6 - Mostrar terminais sem actividade
 7 - Mostrar terminais com saldo positivo
 0 - Sair
-Escolha uma opção: Número inválido!
 Escolha uma opção: MENU PRINCIPAL
 1 - Abrir
 2 - Guardar

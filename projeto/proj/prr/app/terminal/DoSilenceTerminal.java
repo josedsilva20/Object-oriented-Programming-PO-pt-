@@ -23,9 +23,5 @@ class DoSilenceTerminal extends TerminalCommand {
       _display.addLine(Message.alreadySilent());
       _display.display();
     }
-    catch(SendNotificationException sne){
-      _display.addLine(Message.alreadyOn());
-      _display.display();
-    }
   }
 }

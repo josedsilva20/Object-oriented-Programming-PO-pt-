@@ -15,7 +15,7 @@ import prr.core.exception.SendNotificationException;
 /**
  * Abstract terminal.
  */
-public class Terminal implements Serializable, Observer/* FIXME maybe addd more interfaces */{
+public class Terminal implements Serializable/* FIXME maybe addd more interfaces */{
 
   /** Serial number for serialization. */
   private static final long serialVersionUID = 202208091753L;
@@ -32,10 +32,11 @@ public class Terminal implements Serializable, Observer/* FIXME maybe addd more 
   private double _payments;
   private double _balance;
   private String _type;
-  private List<Observer> observers = new ArrayList<Observer>();
+  private List<Observer> _observers = new ArrayList<Observer>();
   private Terminal _sendNotification;
   private boolean _madeCom;
   private TerminalMode _modeAnterior;
+  private Map<String, Client> _notifications;
 
 
   // FIXME define contructor(s)
@@ -49,6 +50,8 @@ public class Terminal implements Serializable, Observer/* FIXME maybe addd more 
     _madeCommunications = new ArrayList<>();
     _receivedCommunications = new ArrayList<>();
     _madeCom = false;
+    _notifications = new HashMap<>();
+
   }
 
   public Terminal(){
@@ -131,6 +134,24 @@ public class Terminal implements Serializable, Observer/* FIXME maybe addd more 
     return _id;
   }
 
+  public String getListMadeCommunications(){
+    String aux = "";
+    for (Communication c : _madeCommunications){
+      aux += c.toString() + "\n";
+    }
+    return aux;
+  }
+
+  public String getListReceivedCommunications(){
+    String aux = "";
+    for (Communication c : _receivedCommunications){
+      aux += c.toString() + "\n";
+    }
+    return aux;
+  }
+
+  
+
   public int getMadeCommunications(){
     return _madeCommunications.size();
   }
@@ -191,23 +212,14 @@ public class Terminal implements Serializable, Observer/* FIXME maybe addd more 
     return true;
   }
   
-  public void setSilence()throws SendNotificationException{
+  public void setSilence() {
     if (isBusy()){
-      try {
-        Notification nbs = new Notification(this, NotificationType.B2S);
-        notifyObservers(nbs);
-      } catch(SendNotificationException sne){
-        throw sne;
-      }
-
+      Notification nbs = new Notification(this, NotificationType.B2S);
+      notifyObservers(nbs);
     }
     if (isOff()){
-      try {
-        Notification nos = new Notification(this, NotificationType.O2S);
-        notifyObservers(nos);
-      } catch(SendNotificationException sne){
-        throw sne;
-      }
+      Notification nos = new Notification(this, NotificationType.O2S);
+      notifyObservers(nos);
     }
     _mode = TerminalMode.SILENCE;
   }
@@ -238,50 +250,40 @@ public class Terminal implements Serializable, Observer/* FIXME maybe addd more 
     return _mode == TerminalMode.IDLE;
   }
 
-  public void setIdle() throws SendNotificationException{
+  public void setIdle() {
     if (isBusy()){
-      try {
         Notification nbi = new Notification(this, NotificationType.B2I);
         notifyObservers(nbi);
-      } catch(SendNotificationException sne){
-        throw sne;
-      }
     }
-    if (isOff() || isSilente()){
-      try {
+    if (isOff()){
         Notification noi = new Notification(this, NotificationType.O2I);
         notifyObservers(noi);
-      } catch(SendNotificationException sne){
-        throw sne;
-      }
+    }
+    if (isSilente()){
+        Notification nsi = new Notification(this, NotificationType.S2I);
+        notifyObservers(nsi);
     }
 
     _mode = TerminalMode.IDLE;
   }
 
-  public void registerObserver(Observer observer) {
-        observers.add(observer);
-    }
+  public void registerObserver( Observer observer) {
+    if (!_observers.contains(observer))
+        _observers.add(observer);
+  }
 
     public void removeObserver(Observer observer) {
-        observers.remove(observer);
+        _observers.remove(observer);
     }
 
-    public void notifyObservers(Notification notification) throws SendNotificationException{
-      try{
-        for (Observer ob : observers) {
-          ob.update(notification);
-        }
-      } catch(SendNotificationException sne){
-        throw sne;
+    public void notifyObservers(Notification notification) {
+      Iterator<Observer> iter = _observers.iterator();
+      while (iter.hasNext()){
+        Observer aux = iter.next();
+        aux.update(notification);
+        iter.remove();
       }
     }
-
-    public void update(Notification notification) throws SendNotificationException{
-        //_notifications.add(notification);
-      throw new SendNotificationException();
-    }
-
 
     //corrigir _madeCommunications para id que vem do network.
     public Communication sendTextCommunication(Terminal to, String msg, int id) throws SendNotificationException {
@@ -313,17 +315,27 @@ public class Terminal implements Serializable, Observer/* FIXME maybe addd more 
     public void saveMode(){
       _modeAnterior = _mode;
     }
-    public void loadMode() throws SendNotificationException{
-      try {
+    public void loadMode(){
+  
         if (_modeAnterior == TerminalMode.SILENCE) {
           setSilence();
         }
         else
           setIdle();
-      } catch (SendNotificationException sne){
-        throw sne;
-      }
+ 
     }
     //public List<Communication> getOngoingCommunications()
     
+    public List<Observer> getObservers() {
+      List<Observer> clients = new ArrayList<>();
+      clients.addAll(_observers);
+      return clients;
+    }
+
+    public void pay(Communication toPay) throws InvalidIdException{
+      if (!_madeCommunications.contains(toPay))
+        throw new InvalidIdException();
+      _debts -= toPay.getCost();
+      _payments += toPay.getCost();
+    }
 }

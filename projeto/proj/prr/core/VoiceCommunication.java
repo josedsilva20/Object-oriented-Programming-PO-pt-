@@ -6,6 +6,9 @@ public class VoiceCommunication extends Communication{
 	public VoiceCommunication(int id, Terminal from, Terminal to){
 		super(id, from, to, "VOICE", 0);
 	}
+	public VoiceCommunication(){
+
+	}
 
 	public boolean equals(VoiceCommunication c1){
 		return this.getId() == c1.getId();
@@ -19,6 +22,10 @@ public class VoiceCommunication extends Communication{
 		}
 		setCost(Math.round(price));
 		return price;
+	}
+
+	public boolean areFriends(Terminal from, Terminal to){
+		return from.getOrderedFriends().contains(to);
 	}
 
 	public void setDuration(int duration){

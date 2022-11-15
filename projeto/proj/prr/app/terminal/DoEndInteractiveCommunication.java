@@ -20,14 +20,9 @@ class DoEndInteractiveCommunication extends TerminalCommand {
   @Override
   protected final void execute() throws CommandException {
     int duration = integerField("duration");
-    try{
       //_network.getOngoingCommunicationId(_receiver)
       int cost = (int) _network.endOngoingCommunication(_receiver, duration);
       _display.addLine(Message.communicationCost(cost));
-    }
-    catch(SendNotificationException sne){
-      
-    }
     _display.display();
   }
 }

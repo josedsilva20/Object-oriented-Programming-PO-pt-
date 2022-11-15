@@ -91,6 +91,14 @@ public abstract class Communication implements Serializable{
 		
 	}
 
+	public long getCost(){
+		return Math.round(_cost);
+	}
+
+	public boolean areFriends(Terminal from, Terminal to){
+		return from.getOrderedFriends().contains(to);
+	}
+	
 	protected abstract double computeCost(String plan, int duration);
 
 	protected abstract int getSize();

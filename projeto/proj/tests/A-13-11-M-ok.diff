@@ -1,5 +1,5 @@
 *** tests/A-13-11-M-ok.out	Tue Nov  1 20:50:59 2022
---- tests/A-13-11-M-ok.outhyp	Mon Nov 14 17:03:44 2022
+--- tests/A-13-11-M-ok.outhyp	Tue Nov 15 17:32:40 2022
 ***************
 *** 42,48 ****
   10 - Terminar comunicação activa
@@ -47,7 +47,7 @@
   9 - Iniciar comunicação
   11 - Mostrar comunicação em curso
   0 - Sair
-! Escolha uma opção: Valores para o terminal '969001':0 (pagamentos),  620 (dívidas).
+! Escolha uma opção: Valores para o terminal '969001':520 (pagamentos),  100 (dívidas).
   OPERAÇÕES DO TERMINAL
   1 - Ligar
   2 - Colocar no silêncio

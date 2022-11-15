@@ -8,7 +8,8 @@ import prr.app.exception.DuplicateClientKeyException;
 import prr.core.exception.DuplClientKeyException;
 import prr.core.exception.InvalidIdException;
 //FIXME add more imports if needed
-
+import java.util.List;
+import java.util.ArrayList;
 /**
  * Show specific client: also show previous notifications.
  */
@@ -27,6 +28,12 @@ class DoShowClient extends Command<Network> {
     try {
       String view = _receiver.viewClient(key);
       _display.addLine(view);
+      List<String> notifications = _receiver.clientNotifications(key);
+      if (notifications.size() != 0) {
+        for (String not : notifications) {
+        _display.addLine(not);
+    }
+      }
     } 
     catch(InvalidIdException iie){
       throw new UnknownClientKeyException(key);

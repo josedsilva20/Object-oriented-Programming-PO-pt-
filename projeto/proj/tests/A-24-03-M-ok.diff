@@ -1,82 +1,5 @@
 *** tests/A-24-03-M-ok.out	Tue Nov  1 16:05:09 2022
---- tests/A-24-03-M-ok.outhyp	Mon Nov 14 17:04:24 2022
-***************
-*** 87,93 ****
-  9 - Iniciar comunicação
-  11 - Mostrar comunicação em curso
-  0 - Sair
-! Escolha uma opção: Número da comunicação: OPERAÇÕES DO TERMINAL
-  1 - Ligar
-  2 - Colocar no silêncio
-  3 - Desligar
---- 87,93 ----
-  9 - Iniciar comunicação
-  11 - Mostrar comunicação em curso
-  0 - Sair
-! Escolha uma opção: OPERAÇÕES DO TERMINAL
-  1 - Ligar
-  2 - Colocar no silêncio
-  3 - Desligar
-***************
-*** 99,104 ****
---- 99,117 ----
-  9 - Iniciar comunicação
-  11 - Mostrar comunicação em curso
-  0 - Sair
-+ Escolha uma opção: O terminal já estava ligado.
-+ OPERAÇÕES DO TERMINAL
-+ 1 - Ligar
-+ 2 - Colocar no silêncio
-+ 3 - Desligar
-+ 4 - Adicionar amigo
-+ 5 - Retirar amigo
-+ 6 - Pagamento
-+ 7 - Consultar saldo
-+ 8 - Enviar comunicação de texto
-+ 9 - Iniciar comunicação
-+ 11 - Mostrar comunicação em curso
-+ 0 - Sair
-  Escolha uma opção: GESTÃO DE TERMINAIS
-  1 - Mostrar todos os terminais
-  2 - Registar terminal
-***************
-*** 157,163 ****
-  9 - Iniciar comunicação
-  11 - Mostrar comunicação em curso
-  0 - Sair
-! Escolha uma opção: Número da comunicação: OPERAÇÕES DO TERMINAL
-  1 - Ligar
-  2 - Colocar no silêncio
-  3 - Desligar
---- 170,176 ----
-  9 - Iniciar comunicação
-  11 - Mostrar comunicação em curso
-  0 - Sair
-! Escolha uma opção: OPERAÇÕES DO TERMINAL
-  1 - Ligar
-  2 - Colocar no silêncio
-  3 - Desligar
-***************
-*** 169,174 ****
---- 182,199 ----
-  9 - Iniciar comunicação
-  11 - Mostrar comunicação em curso
-  0 - Sair
-+ Escolha uma opção: OPERAÇÕES DO TERMINAL
-+ 1 - Ligar
-+ 2 - Colocar no silêncio
-+ 3 - Desligar
-+ 4 - Adicionar amigo
-+ 5 - Retirar amigo
-+ 6 - Pagamento
-+ 7 - Consultar saldo
-+ 8 - Enviar comunicação de texto
-+ 9 - Iniciar comunicação
-+ 11 - Mostrar comunicação em curso
-+ 0 - Sair
-  Escolha uma opção: GESTÃO DE TERMINAIS
-  1 - Mostrar todos os terminais
-  2 - Registar terminal
+--- tests/A-24-03-M-ok.outhyp	Tue Nov 15 17:33:17 2022
 ***************
 *** 193,199 ****
   0 - Sair
@@ -86,4 +9,4 @@
   CONSULTAS
   1 - Mostrar todas as comunicações
   2 - Mostrar comunicações feitas por um cliente
---- 218,223 ----
+--- 193,198 ----

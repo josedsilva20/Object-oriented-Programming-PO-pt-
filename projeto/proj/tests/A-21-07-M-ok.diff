@@ -1,35 +1,28 @@
 *** tests/A-21-07-M-ok.out	Sun Oct 30 18:23:50 2022
---- tests/A-21-07-M-ok.outhyp	Mon Nov 14 17:04:19 2022
+--- tests/A-21-07-M-ok.outhyp	Tue Nov 15 17:33:10 2022
 ***************
-*** 233,245 ****
+*** 233,244 ****
   6 - Mostrar terminais sem actividade
   7 - Mostrar terminais com saldo positivo
   0 - Sair
 ! Escolha uma opção: Identificador do cliente: VOICE|1|969013|969014|1|20|FINISHED
-! VOICE|2|969011|969007|1|20|FINISHED
-! TEXT|3|969011|969007|6|10|FINISHED
-! VOICE|4|969001|969015|1|20|FINISHED
-! VOICE|5|969011|969014|1|20|FINISHED
+  VOICE|2|969011|969007|1|20|FINISHED
+- TEXT|3|969011|969007|6|10|FINISHED
+- VOICE|4|969001|969015|1|20|FINISHED
+  VOICE|5|969011|969014|1|20|FINISHED
 ! TEXT|6|969001|969007|6|10|FINISHED
-! CONSULTAS
+  CONSULTAS
   1 - Mostrar todas as comunicações
   2 - Mostrar comunicações feitas por um cliente
-  3 - Mostrar comunicações recebidas por um cliente
---- 233,239 ----
+--- 233,243 ----
   6 - Mostrar terminais sem actividade
   7 - Mostrar terminais com saldo positivo
   0 - Sair
-! Escolha uma opção: CONSULTAS
+! Escolha uma opção: Identificador do cliente: VOICE|4|969001|969015|1|20|FINISHED
+  VOICE|2|969011|969007|1|20|FINISHED
+  VOICE|5|969011|969014|1|20|FINISHED
+! VOICE|1|969013|969014|1|20|FINISHED
+! 
+  CONSULTAS
   1 - Mostrar todas as comunicações
   2 - Mostrar comunicações feitas por um cliente
-  3 - Mostrar comunicações recebidas por um cliente
-***************
-*** 248,253 ****
---- 242,248 ----
-  6 - Mostrar terminais sem actividade
-  7 - Mostrar terminais com saldo positivo
-  0 - Sair
-+ Escolha uma opção: Número inválido!
-  Escolha uma opção: MENU PRINCIPAL
-  1 - Abrir
-  2 - Guardar

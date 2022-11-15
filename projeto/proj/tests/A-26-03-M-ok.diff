@@ -1,99 +1,5 @@
 *** tests/A-26-03-M-ok.out	Fri Nov  4 12:15:13 2022
---- tests/A-26-03-M-ok.outhyp	Mon Nov 14 17:04:28 2022
-***************
-*** 47,53 ****
-  9 - Iniciar comunicação
-  11 - Mostrar comunicação em curso
-  0 - Sair
-! Escolha uma opção: Número da comunicação: OPERAÇÕES DO TERMINAL
-  1 - Ligar
-  2 - Colocar no silêncio
-  3 - Desligar
---- 47,53 ----
-  9 - Iniciar comunicação
-  11 - Mostrar comunicação em curso
-  0 - Sair
-! Escolha uma opção: OPERAÇÕES DO TERMINAL
-  1 - Ligar
-  2 - Colocar no silêncio
-  3 - Desligar
-***************
-*** 59,64 ****
---- 59,77 ----
-  9 - Iniciar comunicação
-  11 - Mostrar comunicação em curso
-  0 - Sair
-+ Escolha uma opção: O terminal já estava ligado.
-+ OPERAÇÕES DO TERMINAL
-+ 1 - Ligar
-+ 2 - Colocar no silêncio
-+ 3 - Desligar
-+ 4 - Adicionar amigo
-+ 5 - Retirar amigo
-+ 6 - Pagamento
-+ 7 - Consultar saldo
-+ 8 - Enviar comunicação de texto
-+ 9 - Iniciar comunicação
-+ 11 - Mostrar comunicação em curso
-+ 0 - Sair
-  Escolha uma opção: Número do terminal: Tipo de comunicação a iniciar (VOICE, VIDEO): OPERAÇÕES DO TERMINAL
-  1 - Ligar
-  2 - Colocar no silêncio
-***************
-*** 83,89 ****
-  9 - Iniciar comunicação
-  11 - Mostrar comunicação em curso
-  0 - Sair
-! Escolha uma opção: Número da comunicação: OPERAÇÕES DO TERMINAL
-  1 - Ligar
-  2 - Colocar no silêncio
-  3 - Desligar
---- 96,102 ----
-  9 - Iniciar comunicação
-  11 - Mostrar comunicação em curso
-  0 - Sair
-! Escolha uma opção: OPERAÇÕES DO TERMINAL
-  1 - Ligar
-  2 - Colocar no silêncio
-  3 - Desligar
-***************
-*** 95,100 ****
---- 108,125 ----
-  9 - Iniciar comunicação
-  11 - Mostrar comunicação em curso
-  0 - Sair
-+ Escolha uma opção: OPERAÇÕES DO TERMINAL
-+ 1 - Ligar
-+ 2 - Colocar no silêncio
-+ 3 - Desligar
-+ 4 - Adicionar amigo
-+ 5 - Retirar amigo
-+ 6 - Pagamento
-+ 7 - Consultar saldo
-+ 8 - Enviar comunicação de texto
-+ 9 - Iniciar comunicação
-+ 11 - Mostrar comunicação em curso
-+ 0 - Sair
-  Escolha uma opção: Número do terminal: Tipo de comunicação a iniciar (VOICE, VIDEO): OPERAÇÕES DO TERMINAL
-  1 - Ligar
-  2 - Colocar no silêncio
-***************
-*** 119,125 ****
-  9 - Iniciar comunicação
-  11 - Mostrar comunicação em curso
-  0 - Sair
-! Escolha uma opção: Valores para o terminal '969002':490 (pagamentos),  500 (dívidas).
-  OPERAÇÕES DO TERMINAL
-  1 - Ligar
-  2 - Colocar no silêncio
---- 144,150 ----
-  9 - Iniciar comunicação
-  11 - Mostrar comunicação em curso
-  0 - Sair
-! Escolha uma opção: Valores para o terminal '969002':0 (pagamentos),  990 (dívidas).
-  OPERAÇÕES DO TERMINAL
-  1 - Ligar
-  2 - Colocar no silêncio
+--- tests/A-26-03-M-ok.outhyp	Tue Nov 15 17:33:20 2022
 ***************
 *** 161,167 ****
   9 - Iniciar comunicação
@@ -103,86 +9,30 @@
   1 - Ligar
   2 - Colocar no silêncio
   3 - Desligar
---- 186,192 ----
+--- 161,168 ----
   9 - Iniciar comunicação
   11 - Mostrar comunicação em curso
   0 - Sair
-! Escolha uma opção: OPERAÇÕES DO TERMINAL
+! Escolha uma opção: Número da comunicação: O identificador da comunicação é inválido.
+! OPERAÇÕES DO TERMINAL
   1 - Ligar
   2 - Colocar no silêncio
   3 - Desligar
 ***************
-*** 173,209 ****
-  9 - Iniciar comunicação
-  11 - Mostrar comunicação em curso
+*** 195,202 ****
+  6 - Mostrar terminais sem actividade
+  7 - Mostrar terminais com saldo positivo
   0 - Sair
-  Escolha uma opção: GESTÃO DE TERMINAIS
-  1 - Mostrar todos os terminais
-  2 - Registar terminal
-  3 - Operações de terminal
-  0 - Sair
-! Escolha uma opção: MENU PRINCIPAL
-! 1 - Abrir
-! 2 - Guardar
-! 3 - Gestão de clientes
-! 4 - Gestão de terminais
-! 5 - Menu de consultas
-! 6 - Ver saldo global
-  0 - Sair
-! Escolha uma opção: CONSULTAS
-! 1 - Mostrar todas as comunicações
-! 2 - Mostrar comunicações feitas por um cliente
-! 3 - Mostrar comunicações recebidas por um cliente
-! 4 - Mostrar clientes sem dívidas
-! 5 - Mostrar clientes com dívidas
-! 6 - Mostrar terminais sem actividade
-! 7 - Mostrar terminais com saldo positivo
-! 0 - Sair
 ! Escolha uma opção: FANCY|969006|cli003|IDLE|10|0
 ! CONSULTAS
-! 1 - Mostrar todas as comunicações
-! 2 - Mostrar comunicações feitas por um cliente
-! 3 - Mostrar comunicações recebidas por um cliente
-! 4 - Mostrar clientes sem dívidas
-! 5 - Mostrar clientes com dívidas
-! 6 - Mostrar terminais sem actividade
-! 7 - Mostrar terminais com saldo positivo
+  1 - Mostrar todas as comunicações
+  2 - Mostrar comunicações feitas por um cliente
+  3 - Mostrar comunicações recebidas por um cliente
+--- 196,202 ----
+  6 - Mostrar terminais sem actividade
+  7 - Mostrar terminais com saldo positivo
   0 - Sair
-  Escolha uma opção: MENU PRINCIPAL
-  1 - Abrir
---- 198,232 ----
-  9 - Iniciar comunicação
-  11 - Mostrar comunicação em curso
-  0 - Sair
-+ Escolha uma opção: Número do terminal: Adicionar amigo: Operação inválida: O terminal '0' não existe.
-+ OPERAÇÕES DO TERMINAL
-+ 1 - Ligar
-+ 2 - Colocar no silêncio
-+ 3 - Desligar
-+ 4 - Adicionar amigo
-+ 5 - Retirar amigo
-+ 6 - Pagamento
-+ 7 - Consultar saldo
-+ 8 - Enviar comunicação de texto
-+ 9 - Iniciar comunicação
-+ 11 - Mostrar comunicação em curso
-+ 0 - Sair
-  Escolha uma opção: GESTÃO DE TERMINAIS
-  1 - Mostrar todos os terminais
-  2 - Registar terminal
-  3 - Operações de terminal
-  0 - Sair
-! Escolha uma opção: Opção inválida!
-! GESTÃO DE TERMINAIS
-! 1 - Mostrar todos os terminais
-! 2 - Registar terminal
-! 3 - Operações de terminal
-  0 - Sair
-! Escolha uma opção: Opção inválida!
-! GESTÃO DE TERMINAIS
-! 1 - Mostrar todos os terminais
-! 2 - Registar terminal
-! 3 - Operações de terminal
-  0 - Sair
-  Escolha uma opção: MENU PRINCIPAL
-  1 - Abrir
+! Escolha uma opção: CONSULTAS
+  1 - Mostrar todas as comunicações
+  2 - Mostrar comunicações feitas por um cliente
+  3 - Mostrar comunicações recebidas por um cliente
